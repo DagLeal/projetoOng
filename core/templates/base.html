@@ -7,17 +7,34 @@
     <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
 </head>
 <body>
-    <header>
-        <h1>Meu Site</h1>
-        <nav>
-            <a href="/">Início</a>
-            <a href="/sobre">Sobre</a>
-            <a href="/contato">Contato</a>
+    <header id="main-header">
+      <div class="header-content">
+        <div class="logo">
+            <img id="logo-img" src="{% static 'img/logo-grande.png' %}" alt="Logo">
+        </div>
+        <nav class="navbar">
+          <ul class="menu">
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li class="dropdown">
+              <a href="#">Sobre</a>
+              <ul class="dropdown-menu">
+                <li><a href="{% url 'historia' %}">História</a></li>
+                <li><a href="{% url 'presidencia' %}">Presidência</a></li>
+                <li><a href="{% url 'projetos' %}">Projetos</a></li>
+                <li><a href="{% url 'servicos' %}">Serviços</a></li>
+              </ul>
+            </li>
+            <li><a href="{% url 'doacao' %}">Doação</a></li>
+            <li><a href="{% url 'documentacao' %}">Documentação</a></li>
+            <li><a href="{% url 'contato' %}">Contato</a></li>
+          </ul>
         </nav>
+      </div>
     </header>
 
     <main>
-
+        {% block content %}{% endblock %}
     </main>
+    <script src="{% static 'js/header.js' %}"></script>
 </body>
 </html>
