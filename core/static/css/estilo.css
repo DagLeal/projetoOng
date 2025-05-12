@@ -86,3 +86,7 @@ header.shrink {
   height: 80%; /* ajuste conforme necessário */
   transition: all 0.3s ease;
 }
+
+main{
+  padding-top: 17.5vh;
+}
