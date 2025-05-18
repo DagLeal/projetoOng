@@ -248,3 +248,28 @@ body{
   }
 }
 
+/* Início do Home*/
+
+#Onde {
+  padding: 20px;
+}
+
+.conteudo {
+  display: flex;
+  align-items: flex-start;
+  gap: 500px;
+}
+
+#TextoOnde {
+  max-width: 600px;
+}
+
+#ImagemOnde {
+  width: 300px;
+  height: 500px;
+  background-color: #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20pt;
+}
