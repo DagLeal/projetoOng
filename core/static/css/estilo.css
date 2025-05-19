@@ -257,17 +257,26 @@ body{
 .conteudo {
   display: flex;
   align-items: flex-start;
-  gap: 500px;
+  gap: 220px;
 }
 
 #TextoOnde {
   max-width: 600px;
 }
 
-#ImagemOnde {
-  width: 300px;
+#TextoMapa{
+  color: #050505;
+  text-decoration: none;
+}
+
+#TextoMapa:hover {
+    color: #00B35F;
+    text-decoration: underline;
+}
+
+#Mapa {
+  width: 500px;
   height: 500px;
-  background-color: #ccc;
   display: flex;
   justify-content: center;
   align-items: center;
