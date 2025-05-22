@@ -99,7 +99,7 @@ main{
 Inicio da pagina de contato
  */
 
-body{
+body {
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -107,21 +107,21 @@ body{
   justify-content: center;
 }
 
-.container{
+.container {
   width: 85%;
   background: #FFF;
   border-radius: 6px;
   padding: 20px 60px 30px 40px;
-  box-shadow: 0 5px 10px rgb(0,0,0,0.2);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
 }
 
-.container .content{
+.container .content {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.container .content .left-side{
+.container .content .left-side {
   width: 25%;
   height: 100%;
   display: flex;
@@ -132,7 +132,7 @@ body{
   position: relative;
 }
 
-.content .left-side::before{
+.content .left-side::before {
   content: '';
   position: absolute;
   height: 70%;
@@ -143,47 +143,47 @@ body{
   background: #00B35F;
 }
 
-.content .left-side .details{
+.content .left-side .details {
   margin: 14px;
   text-align: center;
 }
 
-.content .left-side .details i{
+.content .left-side .details i {
   font-size: 30px;
   color: #00B35F;
   margin-bottom: 10px;
 }
 
-.content .left-side .details .topic{
+.content .left-side .details .topic {
   font-size: 18px;
   font-weight: 500;
 }
 
 .content .left-side .details .text-one,
-.content .left-side .details .text-two{
+.content .left-side .details .text-two {
   font-size: 14px;
   color: #afafb6;
 }
 
-.container .content .right-side{
+.container .content .right-side {
   width: 75%;
   margin-left: 75px;
 }
 
-.content .right-side .topic-box{
+.content .right-side .topic-box {
   font-size: 23px;
   font-weight: 600;
   color: #00B35F;
 }
 
-.right-side .input-box{
+.right-side .input-box {
   height: 50px;
   width: 100%;
   margin: 12px 0;
 }
 
 .right-side .input-box input,
-.right-side .input-box textarea{
+.right-side .input-box textarea {
   height: 100%;
   width: 100%;
   border: none;
@@ -195,26 +195,21 @@ body{
   resize: none;
 }
 
-.right-side .message-box{
+.right-side .message-box {
   min-height: 6px;
 }
 
-.right-side .input-box textarea{
+.right-side .input-box textarea {
   padding-top: 6px;
 }
 
-/*.right-side .button input[type = "button"]:hover{
-  background: #C1AC9C;
-}*/
-
-
 .right-side .myButton {
-  background-color:#00b35f;
+  background-color:#00B35F;
   border-radius:28px;
   border:1px solid #18ab29;
   display:inline-block;
   cursor:pointer;
-  color:#ffffff;
+  color: #ffffff;
   font-size:16px;
   padding:11px 52px;
   text-decoration:none;
@@ -227,6 +222,7 @@ body{
   position:relative;
   top:1px;
 }
+
 
 /* RESPONSIVIDADE ------------------------------------------ */
 
