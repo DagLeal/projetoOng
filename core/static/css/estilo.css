@@ -475,12 +475,3 @@ color: #232526; /* var(--color-neutral-40) -> cinza médio */
     padding: 3rem 2rem;
   }
 }
-
-/*
-:root {
-  --color-neutral-0: #ffffff;
-  --color-neutral-10: #f5f5f5;
-  --color-neutral-30: #c4c4c4;
-  --color-neutral-40: #a3a3a3;
-}
-*/

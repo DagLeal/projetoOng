@@ -76,3 +76,5 @@ def doacao(request):
         'qr_code': qr_code_base64,
         'codigo_pix': codigo_pix
     })
+
+
