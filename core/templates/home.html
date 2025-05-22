@@ -6,6 +6,7 @@
 {% load static %}
 <head>
     <meta charset="UTF-8">
+    <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
 </head>
 
@@ -25,80 +26,4 @@
 <h1>Tem que colocar os posts da Cadon</h1>
 <script src="https://s.electricblaze.com/widget.js" defer></script>
 <div class="electricblaze-id-2UhxFGr"></div>
-
-<!-- Inicio do rodape -->
-
-<footer>
-  <div id="footer_content">
-      <div id="footer_contacts">
-          <h1>CADON</h1>
-          <p>Centro De Apoio ao Desenvolvimento</p>
-
-          <div id="footer_social_media">
-          <a href="https://www.instagram.com/cadon.br/" target="_blank" class="footer-link" id="instagram">
-              <i class="fa-brands fa-instagram"></i>
-          </a>
-          <a href="https://www.facebook.com/cadonbr" class="footer-link" id="facebook">
-              <i class="fa-brands fa-facebook"></i>
-          </a>
-          <a href="#" class="footer-link" id="whatsapp">
-              <i class="fa-brands fa-whatsapp"></i>
-          </a>
-          </div>
-      </div>
-
-      <ul class="footer-list">
-          <li>
-              <h3>Navegador</h3>
-          </li>
-          <li>
-              <a href="#" class="footer-link">Mantenha-se atualizado com dicas e truques dos melhores gamers!</a>
-          </li>
-          <li>
-              <a href="#" class="footer-link">Leia entrevistas exclusivas com desenvolvedores e influenciadores do mundo dos jogos!</a>
-          </li>
-          <li>
-              <a href="#" class="footer-link">Confira as últimas novidades do setor e prepare-se para os novos lançamentos</a>
-          </li>
-
-      </ul>
-
-      <ul class="footer-list">
-          <li>
-              <h3>Links</h3>
-          </li>
-          <li>
-              <a href="#" class="footer-link">Explore promoções imperdíveis e leve para casa seus títulos favoritos!</a>
-          </li>
-          <li>
-              <a href="#" class="footer-link">Junte-se à nossa comunidade e aproveite ofertas exclusivas em produtos!</a>
-          </li>
-          <li>
-              <a href="#" class="footer-link">Navegue pela nossa coleção de jogos e encontre sua próxima grande aventura!</a>
-          </li>
-
-      </ul>
-
-      <div id="footer_subscribe">
-          <h3>Histórico</h3>
-
-          <p>ENVIE SEU EMAIL PARA RECEBER AJUDA</p>
-
-          <div id="input_group">
-              <input type="email" id="email">
-              <button>
-                  <i class="fa-regular fa-envelope"></i>
-              </button>
-          </div>
-      </div>
-
-  </div>
-
-
-  <div id="footer_copyright">
-      &#169
-      2025 all rights reserved
-  </div>
-
-</footer>
 {% endblock %}
