@@ -203,8 +203,29 @@ body{
   padding-top: 6px;
 }
 
-.right-side .button input[type = "button"]:hover{
+/*.right-side .button input[type = "button"]:hover{
   background: #C1AC9C;
+}*/
+
+
+.right-side .myButton {
+  background-color:#00b35f;
+  border-radius:28px;
+  border:1px solid #18ab29;
+  display:inline-block;
+  cursor:pointer;
+  color:#ffffff;
+  font-size:16px;
+  padding:11px 52px;
+  text-decoration:none;
+  text-shadow:0px 1px 0px #2f6627;
+}
+.right-side .myButton:hover {
+  background-color:#00783e;
+}
+.right-side .myButton:active {
+  position:relative;
+  top:1px;
 }
 
 /* RESPONSIVIDADE ------------------------------------------ */
