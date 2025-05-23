@@ -5,7 +5,6 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
-;
 }
 
 header {
@@ -30,7 +29,7 @@ header.shrink {
   align-items: flex-end;
   justify-content: space-between;
   height: 100%;
-  padding: 5px 40px;
+  padding: 6px 40px;
 }
 
 .navbar .menu {
@@ -94,6 +93,23 @@ header.shrink {
 main{
   padding-top: 17.5vh;
 }
+
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  width: 100%;
+  padding-top: 10px;
+  background-position: bottom;
+}
+
 
 /* --------------------------------------------------------------------
 Inicio da pagina de contato
@@ -222,7 +238,6 @@ body {
   position:relative;
   top:1px;
 }
-
 
 /* RESPONSIVIDADE ------------------------------------------ */
 
