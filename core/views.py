@@ -1,11 +1,38 @@
-from django.shortcuts import render
-from .forms import DoacaoForm
-from .models import Doacao
-from pypix import Pix
 import qrcode
-import io
-import base64
+from io import BytesIO
+from django.http import HttpResponse
+from django.shortcuts import render
+from .models import Doacao
 
+def gerar_qr_code_pix(request, doacao_id):
+    doacao = Doacao.objects.get(id=doacao_id)
+
+    # Substitua por sua chave PIX e dados reais
+    chave_pix = '981107467'
+    nome_recebedor = 'Dagner'
+    cidade = 'Niterói'
+    valor = f'{doacao.valor:.2f}'
+
+    payload = f"""
+000201
+26580014BR.GOV.BCB.PIX0114{chave_pix}
+52040000
+5303986
+540{len(valor):02}{valor}
+5802BR
+5914{nome_recebedor[:14]}
+6010{cidade[:10]}
+62100506abcde
+6304
+""".strip().replace('\n', '')
+
+    # Gerar imagem do QR Code
+    qr = qrcode.make(payload)
+    buffer = BytesIO()
+    qr.save(buffer, format='PNG')
+    buffer.seek(0)
+
+    return HttpResponse(buffer.getvalue(), content_type='image/png')
 
 # Create your views here.
 
@@ -41,40 +68,5 @@ def documentacao(request):
 def contato(request):
     return render(request, 'contato.html')
 
-
 def doacao(request):
-    qr_code_base64 = None
-    codigo_pix = None
-
-    if request.method == 'POST':
-        form = DoacaoForm(request.POST)
-        if form.is_valid():
-            valor = form.cleaned_data['valor']
-            cpf = form.cleaned_data['cpf']
-
-            Doacao.objects.create(valor=valor, cpf=cpf)
-
-            pix = Pix()
-            pix.set_receiver_name("Dagner")
-            pix.set_receiver_city("Niterói")
-            pix.set_pix_key("057.825.437-95")
-            pix.set_amount(float(valor))
-
-            codigo_pix = pix.build_pix_code()
-
-            # Gerar QR code
-            qr = qrcode.make(codigo_pix)
-            buffer = io.BytesIO()
-            qr.save(buffer, format='PNG')
-            qr_code_base64 = base64.b64encode(buffer.getvalue()).decode()
-
-    else:
-        form = DoacaoForm()
-
-    return render(request, 'doacao.html', {
-        'form': form,
-        'qr_code': qr_code_base64,
-        'codigo_pix': codigo_pix
-    })
-
-
+    return render(request, 'doacao.html')

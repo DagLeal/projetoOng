@@ -2,6 +2,6 @@ from django import forms
 
 
 class DoacaoForm(forms.Form):
-    valor = forms.IntegerField(label='Valor da doação (R$)', min_value=1)
-    cpf = forms.CharField(label='CPF', max_length=14)
+    valor = forms.IntegerField(min_value=1, label="Valor (R$)")
+    cpf = forms.CharField(max_length=14, required=False, label="CPF (opcional)")
 
