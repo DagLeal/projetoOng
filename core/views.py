@@ -55,9 +55,9 @@ def doacao(request):
             Doacao.objects.create(valor=valor, cpf=cpf)
 
             pix = Pix()
-            pix.set_receiver_name("Seu Nome ou Empresa")
-            pix.set_receiver_city("SuaCidade")
-            pix.set_pix_key("sua-chave-pix@exemplo.com")
+            pix.set_receiver_name("Dagner")
+            pix.set_receiver_city("Niterói")
+            pix.set_pix_key("057.825.437-95")
             pix.set_amount(float(valor))
 
             codigo_pix = pix.build_pix_code()
