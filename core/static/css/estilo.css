@@ -479,10 +479,49 @@ footer {
 
 /* História */
 
-.historia-wrapper h1 {
-    color: #00B35F;
+.historia-section {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
 }
 
-.historia-wrapper h2 {
-    color: #EB3135;
+.titulo {
+  font-size: 2.5rem;
+  color: #00B35F; /* verde da ONG */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.historia-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+}
+
+.historia-box {
+  background: #fff;
+  padding: 20px 30px;
+  border-left: 4px solid #F58634; /* laranja para destacar */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+}
+
+.historia-box h3 {
+  margin-top: 15px;
+  color: #EB3135; /* vermelho institucional */
+}
+
+.historia-box ul {
+  margin-top: 10px;
+  padding-left: 20px;
+}
+
+.historia-box li {
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .historia-grid {
+    grid-template-columns: 1fr;
+  }
 }
