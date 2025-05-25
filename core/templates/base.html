@@ -6,6 +6,8 @@
     <link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}">
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/estilo.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 </head>
 <body>
     <div class="page-wrapper">
@@ -45,15 +47,15 @@
                   <p>Centro de Apoio ao Desenvolvimento!</p>
 
                   <div id="footer_social_media">
-                  <a href="https://www.instagram.com/igorr.boy/" target="_blank" class="footer-link" id="instagram">
-                      <i class="fa-brands fa-instagram"></i>
-                  </a>
-                  <a href="https://www.facebook.com/PlayStationBR" class="footer-link" id="facebook">
-                      <i class="fa-brands fa-facebook"></i>
-                  </a>
-                  <a href="#" class="footer-link" id="whatsapp">
-                      <i class="fa-brands fa-whatsapp"></i>
-                  </a>
+                      <a href="https://www.instagram.com/cadon.br/?api=1" target="_blank" class="footer-link" id="instagram">
+                          <i class="fab fa-instagram"></i>
+                      </a>
+                      <a href="https://www.facebook.com/cadonbr/?locale=pt_BR" target="_blank" class="footer-link" id="facebook">
+                          <i class="fab fa-facebook-f"></i>
+                      </a>
+                      <a href="https://wa.me/55021992773417" target="_blank" class="footer-link" id="whatsapp">
+                          <i class="fab fa-whatsapp"></i>
+                      </a>
                   </div>
               </div>
 
@@ -62,44 +64,42 @@
                       <h3>Links</h3>
                   </li>
                   <li>
-                      <a href="#" class="footer-link">Mantenha-se atualizado com dicas e truques dos melhores gamers!</a>
+                      <a href="http://afrocariocadecinema.org.br/" class="footer-link">Afro-Carioca de Cinema</a>
                   </li>
                   <li>
-                      <a href="#" class="footer-link">Leia entrevistas exclusivas com desenvolvedores e influenciadores do mundo dos jogos!</a>
+                      <a href="https://prefeitura.rio/" class="footer-link">Prefeitura do Rio de Janeiro</a>
                   </li>
                   <li>
-                      <a href="#" class="footer-link">Confira as últimas novidades do setor e prepare-se para os novos lançamentos</a>
+                      <a href="http://www.palmares.gov.br/" class="footer-link">Fundação Cultural Palmares</a>
+                  </li>
+                  <li>
+                      <a href="https://reafro.org/" class="footer-link">Reafro</a>
+                  </li>
+                  <li>
+                      <a href="https://www.bndes.gov.br/" class="footer-link">BNDS</a>
+                  </li>
+                  <li>
+                      <a href="http://comdedinerj.blogspot.com/" class="footer-link">COMDEDINE</a>
+                  </li>
+                  <li>
+                      <a href="https://colymar.webnode.page/" class="footer-link">COLYMAR</a>
                   </li>
 
               </ul>
 
-              <ul class="footer-list">
-                  <li>
-                      <h3>Navegador</h3>
-                  </li>
-                  <li>
-                      <a href="#" class="footer-link">Explore promoções imperdíveis e leve para casa seus títulos favoritos!</a>
-                  </li>
-                  <li>
-                      <a href="#" class="footer-link">Junte-se à nossa comunidade e aproveite ofertas exclusivas em produtos!</a>
-                  </li>
-                  <li>
-                      <a href="#" class="footer-link">Navegue pela nossa coleção de jogos e encontre sua próxima grande aventura!</a>
-                  </li>
 
-              </ul>
 
               <div id="footer_subscribe">
-                  <h3>AJUDA</h3>
+                  <h3>Onde Estamos?</h3>
 
-                  <p>ENVIE SEU EMAIL PARA RECEBER AJUDA</p>
+                  <p>Rua Vega 16 loja 20 - Vila Isabel
+<br>Rio de Janeiro - RJ - CEP: 20540-375<br></p>
 
-                  <div id="input_group">
-                      <input type="email" id="email">
-                      <button>
-                          <i class="fa-regular fa-envelope"></i>
-                      </button>
-                  </div>
+
+                      <a href="{% url 'contato' %}" class="map-button">
+   Fale Conosco
+</a>
+
               </div>
 
           </div>

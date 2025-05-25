@@ -550,3 +550,20 @@ footer {
     grid-template-columns: 1fr;
   }
 }
+/*Botão de Redirecionamento Footer*/
+.map-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: #00B35F; /* verde da ONG */
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.map-button:hover {
+    background-color: #009e54; /* verde um pouco mais escuro */
+    transform: translateY(-2px);
+}
