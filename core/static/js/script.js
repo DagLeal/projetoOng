@@ -15,3 +15,22 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 });
+
+
+function mostrarImagem() {
+    const select = document.getElementById('documentoSelect');
+    const img = document.getElementById('imagemSelecionada');
+    const url = select.value;
+
+    if (url) {
+        img.src = url;
+        img.style.display = 'block';
+    } else {
+        img.style.display = 'none';
+    }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    document.getElementById('documentoSelect').addEventListener('change', mostrarImagem);
+});
+

@@ -128,3 +128,6 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'seu@email.com'
 EMAIL_HOST_PASSWORD = 'sua-senha-ou-app-password'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'

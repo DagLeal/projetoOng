@@ -3,6 +3,8 @@ from io import BytesIO
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Doacao
+from .models import Documento
+
 
 def gerar_qr_code_pix(request, doacao_id):
     doacao = Doacao.objects.get(id=doacao_id)
@@ -34,6 +36,7 @@ def gerar_qr_code_pix(request, doacao_id):
 
     return HttpResponse(buffer.getvalue(), content_type='image/png')
 
+
 # Create your views here.
 
 
@@ -62,7 +65,8 @@ def servicos(request):
 
 
 def documentacao(request):
-    return render(request, 'documentacao.html')
+    documentos = Documento.objects.all()
+    return render(request, 'documentacao.html', {'documentos': documentos})
 
 
 def contato(request):
