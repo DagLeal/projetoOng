@@ -476,3 +476,13 @@ footer {
     padding: 3rem 2rem;
   }
 }
+
+/* História */
+
+.historia-wrapper h1 {
+    color: #00B35F;
+}
+
+.historia-wrapper h2 {
+    color: #EB3135;
+}
