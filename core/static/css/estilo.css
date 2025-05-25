@@ -1,7 +1,7 @@
 /*HTML base*/
 @font-face {
     font-family: 'Poppins';
-    src: url("core/static/fonts/Poppins-Regular.ttf") format('truetype');
+    src: url("../fonts/Poppins-Regular.ttf") format('truetype');
 }
 
 * {
@@ -96,10 +96,6 @@ header.shrink {
   transition: all 0.3s ease;
 }
 
-main{
-  padding-top: 17.5vh;
-}
-
 .page-wrapper {
   display: flex;
   flex-direction: column;
@@ -110,6 +106,7 @@ main{
 
 main {
   flex: 1;
+  padding-top: 17.5vh;
 }
 
 /*Footer*/
@@ -126,7 +123,7 @@ footer {
 }
 
 #footer_content{
-   background-color: #00B35F; /* verde da ong */
+  background-color: #00B35F; /* verde da ong */
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   padding: 3rem 3.5rem;
