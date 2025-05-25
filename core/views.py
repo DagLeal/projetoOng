@@ -66,7 +66,11 @@ def servicos(request):
 
 def documentacao(request):
     documentos = Documento.objects.all()
-    return render(request, 'documentacao.html', {'documentos': documentos})
+    ultimo_documento = Documento.objects.order_by('-id').first()  # ou '-data_envio' se tiver
+    return render(request, 'documentacao.html', {
+        'documentos': documentos,
+        'ultimo_documento': ultimo_documento,
+    })
 
 
 def contato(request):

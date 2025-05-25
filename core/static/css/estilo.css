@@ -400,6 +400,31 @@ footer {
   margin-top: 0;
 }
 
+/* Documentação */
+
+.doc-main{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.doc-main h1{
+  color: #00B35F;
+}
+
+#documentoSelect{
+  padding: 10px;
+  font-size: 16px;
+  width: 80%;
+  max-width: 500px;
+}
+
+#documentoSelecionado{
+  margin-top: 30px;
+}
+
 /* RESPONSIVIDADE ------------------------------------------ */
 
 @media (max-width: 768px) {
