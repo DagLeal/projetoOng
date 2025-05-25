@@ -2,22 +2,28 @@
 {% load static %}
 
 {% block content %}
-<main>
-  <section style="display: flex; flex-direction: column; align-items: center; gap: 2rem; padding: 2rem;">
-    <h1 style="color: #00B35F;">Documentação</h1>
+<div class="conteudo" style="text-align: center;">
+    <section class="doc-main">
+        <h1>Documentação</h1>
 
-    <select id="documentoSelect" style="padding: 10px; font-size: 16px; width: 80%; max-width: 500px;">
-        <option value="">-- Selecione um documento --</option>
-        {% for doc in documentos %}
-            <option value="{{ doc.imagem.url }}">{{ doc.titulo }}</option>
-        {% endfor %}
-    </select>
+        <select id="documentoSelect" onchange="mostrarImagem()">
+            <option value="">Selecione um documento</option>
+            {% for doc in documentos %}
+                <option value="{{ doc.imagem.url }}" {% if doc.id == ultimo_documento.id %}selected{% endif %}>
+                    {{ doc.titulo }}
+                </option>
+            {% endfor %}
+        </select>
 
-    <div class="imagem-documento" style="margin-top: 2rem;">
-        <img id="imagemSelecionada" src="" alt="Documento selecionado" style="max-width: 90%; display: none; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
-    </div>
-  </section>
-</main>
+        <div id="documentoSelecionado">
+            {% if ultimo_documento %}
+                <img id="imagemSelecionada" src="{{ ultimo_documento.imagem.url }}" alt="Documento" style="max-width: 90%; height: auto;">
+            {% else %}
+                <img id="imagemSelecionada" style="display: none; max-width: 90%; height: auto;">
+            {% endif %}
+        </div>
+    </section>
+</div>
 
 <script src="{% static 'js/script.js' %}"></script>
 {% endblock %}
