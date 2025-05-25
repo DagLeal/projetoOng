@@ -4,7 +4,7 @@
 {% block content %}
 <div class="conteudo" style="text-align: center;">
     <section class="doc-main">
-        <h1>Documentação</h1>
+        <h1 class="titulo">Documentação</h1>
 
         <select id="documentoSelect" onchange="mostrarDocumento()">
             <option value="">Selecione um documento</option>
@@ -15,7 +15,9 @@
             {% endfor %}
         </select>
 
-        <div id="documentoSelecionado" style="margin-top: 20px;">
+                    <div id="botaoDownload" style="margin-top: 15px;"></div>
+
+        <div id="documentoSelecionado" style="margin-top: 20px; width: 100%;">
             {% if ultimo_documento %}
                 {% if ultimo_documento.tipo == 'imagem' %}
                     <img id="arquivoVisual" src="{{ ultimo_documento.arquivo.url }}" style="max-width: 90%; height: auto;">

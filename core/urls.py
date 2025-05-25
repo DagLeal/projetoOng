@@ -12,6 +12,7 @@ urlpatterns = [
     path('documentacao/', views.documentacao, name='documentacao'),
     path('contato/', views.contato, name='contato'),
     path('doacao/', views.doacao, name='doacao'),
+    path('enviar-contato/', views.enviar_contato, name='enviar_contato'),
     path('qr/<int:doacao_id>/', views.gerar_qr_code_pix, name='qr_pix'),
 ]
 

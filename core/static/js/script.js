@@ -28,14 +28,27 @@ document.addEventListener('DOMContentLoaded', () => {
     function mostrarDocumento() {
         const id = select.value;
         const doc = documentos.find(d => d.pk == id);
+        const container = document.getElementById("documentoSelecionado");
+        const downloadDiv = document.getElementById("botaoDownload");
+
         if (!doc) {
             container.innerHTML = "";
+            downloadDiv.innerHTML = "";
             return;
         }
 
-        const url = "/media/" + doc.fields.arquivo;
+        const path = doc.fields.arquivo.startsWith('/') ? doc.fields.arquivo : '/' + doc.fields.arquivo;
+        const url = "/media" + path;
         const ext = url.split('.').pop().toLowerCase();
 
+        // Botão de download (aparece só se for PDF)
+        if (ext === 'pdf') {
+            downloadDiv.innerHTML = `<a href="${url}" class="btn btn-success" download>⬇️ Baixar PDF</a>`;
+        } else {
+            downloadDiv.innerHTML = "";
+        }
+
+        // Exibição do conteúdo
         if (['png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp'].includes(ext)) {
             container.innerHTML = `<img src="${url}" style="max-width: 90%; height: auto;">`;
         } else if (ext === 'pdf') {
@@ -44,8 +57,8 @@ document.addEventListener('DOMContentLoaded', () => {
             container.innerHTML = `<a href="${url}" class="btn btn-primary" target="_blank">📊 Baixar Planilha</a>`;
         } else {
             container.innerHTML = `<a href="${url}" class="btn btn-primary" target="_blank">📄 Baixar Documento</a>`;
-        }
     }
+}
 
     select.addEventListener("change", mostrarDocumento);
     if (select.value) mostrarDocumento();

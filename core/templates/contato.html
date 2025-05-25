@@ -3,7 +3,8 @@
 {% block title %}CADON - Contato{% endblock %}
 
 {% block content %}
-<h1>Página Contato</h1>
+<h1>Entre em Contato Conosco</h1>
+
 <div id="contact-page">
     <div class = "container">
         <div class = "content">
@@ -11,8 +12,8 @@
                 <div class = "address details">
                     <i class = "fas fa-map-marker-alt"></i>
                     <div class = "topic">Endereço</div>
-                    <div class = "text-one">Nome da rua, número 123</div>
-                    <div class = "text-two">Bairro Cidade</div>
+                    <div class = "text-one">Rua Vega 16, Loja 20</div>
+                    <div class = "text-two">Vila Isabel, Rio de Janeiro, RJ</div>
                 </div>
                 <div class = "address details">
                     <i class = "fas fa-phone-alt"></i>
@@ -23,8 +24,7 @@
                 <div class = "address details">
                     <i class = "fas fa-envelope"></i>
                     <div class = "topic">Email</div>
-                    <div class = "text-one">cadonbr@cadonbr.org</div>
-                    <div class = "text-two">iguinho@gmail.com</div>
+                    <div class = "text-one">cadon.org@gmail.com</div>
                 </div>
             </div>
             <div class = "right-side">
@@ -32,20 +32,19 @@
                 <p>Se você tiver alguma dúvida relacionada a ong, você pode enviar sua mensagem aqui.
                     É um prazer ajudá-lo</p>
 
-                <form action = "#">
-                    <div class = "input-box">
-                        <input type = "text" placeholder="Digite seu nome">
-                    </div>
-
-                    <div class = "input-box">
-                        <input type="text" placeholder="Digite seu email">
-                    </div>
-
-                    <div class = "input-box message-box">
-                        <textarea placeholder="Digite sua mensagem"></textarea>
+                <form action="{% url 'enviar_contato' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="input-box">
+                        <input type="text" name="nome" placeholder="Digite seu nome" required>
                     </div>
                     <div class="input-box">
-                        <input type="button" class="myButton" value="Doar">
+                        <input type="email" name="email" placeholder="Digite seu email" required>
+                    </div>
+                    <div class="input-box message-box">
+                        <textarea name="mensagem" placeholder="Digite sua mensagem" rows="6" required></textarea>
+                    </div>
+                    <div class="input-box">
+                        <input type="submit" class="myButton" value="Enviar">
                     </div>
                 </form>
             </div>
@@ -58,9 +57,9 @@
         <div class="conteudo">
             <div id="TextoOnde">
                 <p>
-                  O CAD - Centro de Apoio ao Desenvolvimento é uma organização não governamental sem fins lucrativos,
-                    fundada em 13 de março de 1998, que fica localizada na
-                    <a href='https://maps.app.goo.gl/TqrTXrPgkeW8mehD9' id='TextoMapa'>rua Vega 16 Loja 20,
+                  O CADON - é uma organização não governamental sem fins lucrativos, fundada em 13 de março de 1998
+                    , que fica localizada na
+                    <a href='https://maps.app.goo.gl/TqrTXrPgkeW8mehD9' id='TextoMapa'>Rua Vega 16 Loja 20,
                         Rio de Janeiro, Rio de Janeiro</a>
                 </p>
             </div>
