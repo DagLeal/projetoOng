@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Doacao
 from .models import Documento
-
+from django.core import serializers
 
 def gerar_qr_code_pix(request, doacao_id):
     doacao = Doacao.objects.get(id=doacao_id)
@@ -66,10 +66,14 @@ def servicos(request):
 
 def documentacao(request):
     documentos = Documento.objects.all()
-    ultimo_documento = Documento.objects.order_by('-id').first()  # ou '-data_envio' se tiver
+    ultimo_documento = documentos.last() if documentos.exists() else None
+
+    documentos_json = serializers.serialize('json', documentos)
+
     return render(request, 'documentacao.html', {
         'documentos': documentos,
         'ultimo_documento': ultimo_documento,
+        'documentos_json': documentos_json
     })
 
 

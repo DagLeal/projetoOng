@@ -17,20 +17,36 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-function mostrarImagem() {
-    const select = document.getElementById('documentoSelect');
-    const img = document.getElementById('imagemSelecionada');
-    const url = select.value;
+document.addEventListener('DOMContentLoaded', () => {
+    const documentos = JSON.parse(
+        document.getElementById('documentos-json').textContent
+    );
 
-    if (url) {
-        img.src = url;
-        img.style.display = 'block';
-    } else {
-        img.style.display = 'none';
+    const select = document.getElementById("documentoSelect");
+    const container = document.getElementById("documentoSelecionado");
+
+    function mostrarDocumento() {
+        const id = select.value;
+        const doc = documentos.find(d => d.pk == id);
+        if (!doc) {
+            container.innerHTML = "";
+            return;
+        }
+
+        const url = "/media/" + doc.fields.arquivo;
+        const ext = url.split('.').pop().toLowerCase();
+
+        if (['png', 'jpg', 'jpeg', 'gif', 'bmp', 'webp'].includes(ext)) {
+            container.innerHTML = `<img src="${url}" style="max-width: 90%; height: auto;">`;
+        } else if (ext === 'pdf') {
+            container.innerHTML = `<iframe src="${url}" width="90%" height="800px"></iframe>`;
+        } else if (['xls', 'xlsx', 'csv'].includes(ext)) {
+            container.innerHTML = `<a href="${url}" class="btn btn-primary" target="_blank">📊 Baixar Planilha</a>`;
+        } else {
+            container.innerHTML = `<a href="${url}" class="btn btn-primary" target="_blank">📄 Baixar Documento</a>`;
+        }
     }
-}
 
-document.addEventListener('DOMContentLoaded', function () {
-    document.getElementById('documentoSelect').addEventListener('change', mostrarImagem);
+    select.addEventListener("change", mostrarDocumento);
+    if (select.value) mostrarDocumento();
 });
-

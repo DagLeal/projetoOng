@@ -6,24 +6,33 @@
     <section class="doc-main">
         <h1>Documentação</h1>
 
-        <select id="documentoSelect" onchange="mostrarImagem()">
+        <select id="documentoSelect" onchange="mostrarDocumento()">
             <option value="">Selecione um documento</option>
             {% for doc in documentos %}
-                <option value="{{ doc.imagem.url }}" {% if doc.id == ultimo_documento.id %}selected{% endif %}>
+                <option value="{{ doc.id }}" {% if doc.id == ultimo_documento.id %}selected{% endif %}>
                     {{ doc.titulo }}
                 </option>
             {% endfor %}
         </select>
 
-        <div id="documentoSelecionado">
+        <div id="documentoSelecionado" style="margin-top: 20px;">
             {% if ultimo_documento %}
-                <img id="imagemSelecionada" src="{{ ultimo_documento.imagem.url }}" alt="Documento" style="max-width: 90%; height: auto;">
-            {% else %}
-                <img id="imagemSelecionada" style="display: none; max-width: 90%; height: auto;">
+                {% if ultimo_documento.tipo == 'imagem' %}
+                    <img id="arquivoVisual" src="{{ ultimo_documento.arquivo.url }}" style="max-width: 90%; height: auto;">
+                {% elif ultimo_documento.tipo == 'pdf' %}
+                    <iframe id="arquivoVisual" src="{{ ultimo_documento.arquivo.url }}" width="90%" height="800px"></iframe>
+                {% elif ultimo_documento.tipo == 'planilha' %}
+                    <a id="arquivoVisual" href="{{ ultimo_documento.arquivo.url }}" class="btn btn-primary" target="_blank">📊 Baixar Planilha</a>
+                {% else %}
+                    <a id="arquivoVisual" href="{{ ultimo_documento.arquivo.url }}" class="btn btn-primary" target="_blank">📄 Baixar Documento</a>
+                {% endif %}
             {% endif %}
         </div>
     </section>
 </div>
 
+<script id="documentos-json" type="application/json">{{ documentos_json|safe }}</script>
 <script src="{% static 'js/script.js' %}"></script>
+
 {% endblock %}
+
