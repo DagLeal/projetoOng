@@ -38,3 +38,29 @@ class Noticia(models.Model):
     def __str__(self):
         return self.titulo
 
+
+class Parceiro(models.Model):
+    nome = models.CharField(max_length=255)
+    imagem = models.ImageField(upload_to='parceiros/')
+    link = models.URLField()
+    texto = models.TextField()
+
+    def __str__(self):
+        return self.nome
+
+
+class Projeto(models.Model):
+    nome = models.CharField(max_length=200)
+    link = models.URLField(blank=True)
+    texto = models.TextField()
+
+    def __str__(self):
+        return self.nome
+
+class ImagemProjeto(models.Model):
+    projeto = models.ForeignKey(Projeto, on_delete=models.CASCADE, related_name='imagens')
+    imagem = models.ImageField(upload_to='projetos/')
+    titulo = models.CharField(max_length=200, blank=True)
+
+    def __str__(self):
+        return self.titulo or f"Imagem de {self.projeto.nome}"

@@ -1,5 +1,35 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block content %}
-<h1>Página História</h1>
+<h1 class="titulo" style="padding-top: 30px">Projetos</h1>
+
+{% for projeto in projetos %}
+    <div class="projeto">
+        <h2 class="titulo-projeto">{{ projeto.nome }}</h2>
+
+        {% if projeto.imagens.all %}
+        <div class="carousel-container">
+            <div class="carousel" id="carousel-{{ forloop.counter }}">
+                {% for imagem in projeto.imagens.all %}
+                <div class="slide">
+                    <img src="{{ imagem.imagem.url }}" alt="{{ imagem.titulo }}">
+                    {% if imagem.titulo %}
+                    <div class="imagem-titulo">{{ imagem.titulo }}</div>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            <button class="prev" onclick="moveSlide('{{ forloop.counter }}', -1)">❮</button>
+            <button class="next" onclick="moveSlide('{{ forloop.counter }}', 1)">❯</button>
+        </div>
+        {% endif %}
+
+        <p class="texto-projeto">{{ projeto.texto }}</p>
+        {% if projeto.link %}
+        <p><a href="{{ projeto.link }}" target="_blank">{{ projeto.link }}</a></p>
+        {% endif %}
+    </div>
+{% endfor %}
+
 {% endblock %}

@@ -1,8 +1,7 @@
 import qrcode
 from io import BytesIO
 from django.http import HttpResponse
-from .models import Doacao
-from .models import Documento
+from .models import Doacao, Documento, Parceiro, Projeto
 from django.core import serializers
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
@@ -63,8 +62,9 @@ def projetos(request):
     return render(request, 'projetos.html')
 
 
-def servicos(request):
-    return render(request, 'servicos.html')
+def parceiros(request):
+    parceiros = Parceiro.objects.all()
+    return render(request, 'parceiros.html', {'parceiros': parceiros})
 
 
 def documentacao(request):
@@ -116,3 +116,8 @@ def enviar_contato(request):
 
 def doacao(request):
     return render(request, 'doacao.html')
+
+
+def projetos_view(request):
+    projetos = Projeto.objects.prefetch_related('imagens').all()
+    return render(request, 'projetos.html', {'projetos': projetos})

@@ -63,3 +63,21 @@ document.addEventListener('DOMContentLoaded', () => {
     select.addEventListener("change", mostrarDocumento);
     if (select.value) mostrarDocumento();
 });
+
+/* Projetos */
+
+const carrosseis = document.querySelectorAll('.carousel');
+
+carrosseis.forEach((carousel, index) => {
+    carousel.dataset.index = 0;
+});
+
+function moveSlide(carrosselId, direction) {
+    const carousel = document.getElementById(`carousel-${carrosselId}`);
+    const slides = carousel.querySelectorAll('.slide');
+    let index = parseInt(carousel.dataset.index);
+
+    index = (index + direction + slides.length) % slides.length;
+    carousel.dataset.index = index;
+    carousel.style.transform = `translateX(-${index * 100}%)`;
+}

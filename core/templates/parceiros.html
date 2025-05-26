@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+<h1 class="titulo parceiros-titulo">Parceiros</h1>
+
+    {% for parceiro in parceiros %}
+        <div class="parceiro">
+            <img src="{{ parceiro.imagem.url }}" alt="{{ parceiro.nome }}">
+            <div class="conteudo-parceiros">
+                <h2 class="nome-parceiro">{{ parceiro.nome }}</h2>
+                <p><a href="{{ parceiro.link }}" target="_blank" class="link-parceiro">{{ parceiro.link }}</a></p>
+                <p class="texto-parceiro">{{ parceiro.texto }}</p>
+            </div>
+        </div>
+    {% endfor %}
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}

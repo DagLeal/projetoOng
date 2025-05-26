@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Documento, Doacao, Noticia
+from .models import Documento, Doacao, Noticia, Parceiro, Projeto, ImagemProjeto
 
 
 @admin.register(Documento)
@@ -34,3 +34,16 @@ class DoacaoAdmin(admin.ModelAdmin):
 class NoticiaAdmin(admin.ModelAdmin):
     list_display = ('titulo', 'data_publicacao')
     search_fields = ('titulo',)
+
+@admin.register(Parceiro)
+class ParceiroAdmin(admin.ModelAdmin):
+    list_display = ('nome', 'link')
+
+class ImagemProjetoInline(admin.TabularInline):
+    model = ImagemProjeto
+    extra = 1
+
+class ProjetoAdmin(admin.ModelAdmin):
+    inlines = [ImagemProjetoInline]
+
+admin.site.register(Projeto, ProjetoAdmin)
