@@ -1,10 +1,13 @@
 import qrcode
 from io import BytesIO
 from django.http import HttpResponse
-from django.shortcuts import render
 from .models import Doacao
 from .models import Documento
-
+from django.core import serializers
+from django.core.mail import send_mail
+from django.shortcuts import render, redirect
+from django.conf import settings
+from django.contrib import messages
 
 def gerar_qr_code_pix(request, doacao_id):
     doacao = Doacao.objects.get(id=doacao_id)
@@ -66,15 +69,50 @@ def servicos(request):
 
 def documentacao(request):
     documentos = Documento.objects.all()
-    ultimo_documento = Documento.objects.order_by('-id').first()  # ou '-data_envio' se tiver
+    ultimo_documento = documentos.last() if documentos.exists() else None
+
+    documentos_json = serializers.serialize('json', documentos)
+
     return render(request, 'documentacao.html', {
         'documentos': documentos,
         'ultimo_documento': ultimo_documento,
+        'documentos_json': documentos_json
     })
 
 
 def contato(request):
     return render(request, 'contato.html')
+
+
+def enviar_contato(request):
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        email = request.POST.get('email')
+        mensagem = request.POST.get('mensagem')
+
+        corpo_email = f"""
+        Nova mensagem do site:
+
+        Nome: {nome}
+        E-mail: {email}
+
+        Mensagem:
+        {mensagem}
+        """
+
+        send_mail(
+            subject="Nova mensagem do formulário de contato",
+            message=corpo_email,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[settings.CONTACT_EMAIL],  # ou escreva diretamente o e-mail, ex: ['voce@gmail.com']
+            fail_silently=False,
+        )
+
+        messages.success(request, 'Mensagem enviada com sucesso!')
+        return redirect('contato')  # redirecione para a mesma página ou outra
+
+    return redirect('contato')
+
 
 def doacao(request):
     return render(request, 'doacao.html')

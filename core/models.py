@@ -1,14 +1,21 @@
 from django.db import models
 
-# Create your models here.
-
-
 class Documento(models.Model):
     titulo = models.CharField(max_length=255)
-    imagem = models.ImageField(upload_to='documentos/')
+    arquivo = models.FileField(upload_to='documentos/', default='documentos/default.png')
 
     def __str__(self):
         return self.titulo
+
+    @property
+    def tipo(self):
+        if self.arquivo.name.lower().endswith(('.png', '.jpg', '.jpeg', '.gif', '.bmp', '.webp')):
+            return 'imagem'
+        elif self.arquivo.name.lower().endswith('.pdf'):
+            return 'pdf'
+        elif self.arquivo.name.lower().endswith(('.xls', '.xlsx', '.csv')):
+            return 'planilha'
+        return 'outro'
 
 
 class Doacao(models.Model):

@@ -321,14 +321,12 @@ footer {
 }
 
 .right-side .input-box {
-  height: 50px;
   width: 100%;
   margin: 12px 0;
 }
 
 .right-side .input-box input,
 .right-side .input-box textarea {
-  height: 100%;
   width: 100%;
   border: none;
   outline: none;

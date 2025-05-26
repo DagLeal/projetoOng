@@ -41,50 +41,75 @@
         </main>
 
         <footer>
-  <div id="footer_content">
+          <div id="footer_content">
+              <div id="footer_contacts">
+                  <h1>Cadon</h1>
+                  <p>Centro de Apoio ao Desenvolvimento!</p>
 
-    <div id="footer_contacts">
-      <h1>Cadon</h1>
-      <p>Centro de Apoio ao Desenvolvimento!</p>
+                  <div id="footer_social_media">
+                      <a href="https://www.instagram.com/cadon.br/?api=1" target="_blank" class="footer-link" id="instagram">
+                          <i class="fab fa-instagram"></i>
+                      </a>
+                      <a href="https://www.facebook.com/cadonbr/?locale=pt_BR" target="_blank" class="footer-link" id="facebook">
+                          <i class="fab fa-facebook-f"></i>
+                      </a>
+                      <a href="https://wa.me/55021992773417" target="_blank" class="footer-link" id="whatsapp">
+                          <i class="fab fa-whatsapp"></i>
+                      </a>
+                  </div>
+              </div>
 
-      <div id="footer_social_media">
-        <a href="https://www.instagram.com/cadon.br/?api=1" target="_blank" class="footer-link" id="instagram">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://www.facebook.com/cadonbr/?locale=pt_BR" target="_blank" class="footer-link" id="facebook">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="https://wa.me/55021992773417" target="_blank" class="footer-link" id="whatsapp">
-          <i class="fab fa-whatsapp"></i>
-        </a>
-      </div>
-    </div>
+              <ul class="footer-list">
+                  <li>
+                      <h3>Links</h3>
+                  </li>
+                  <li>
+                      <a href="http://afrocariocadecinema.org.br/" class="footer-link">Afro-Carioca de Cinema</a>
+                  </li>
+                  <li>
+                      <a href="https://prefeitura.rio/" class="footer-link">Prefeitura do Rio de Janeiro</a>
+                  </li>
+                  <li>
+                      <a href="http://www.palmares.gov.br/" class="footer-link">Fundação Cultural Palmares</a>
+                  </li>
+                  <li>
+                      <a href="https://reafro.org/" class="footer-link">Reafro</a>
+                  </li>
+                  <li>
+                      <a href="https://www.bndes.gov.br/" class="footer-link">BNDS</a>
+                  </li>
+                  <li>
+                      <a href="http://comdedinerj.blogspot.com/" class="footer-link">COMDEDINE</a>
+                  </li>
+                  <li>
+                      <a href="https://colymar.webnode.page/" class="footer-link">COLYMAR</a>
+                  </li>
 
-    <ul class="footer-list">
-      <li><h3>Links</h3></li>
-      <li><a href="http://afrocariocadecinema.org.br/" class="footer-link">Afro-Carioca de Cinema</a></li>
-      <li><a href="https://prefeitura.rio/" class="footer-link">Prefeitura do Rio de Janeiro</a></li>
-      <li><a href="http://www.palmares.gov.br/" class="footer-link">Fundação Cultural Palmares</a></li>
-      <li><a href="https://reafro.org/" class="footer-link">Reafro</a></li>
-      <li><a href="https://www.bndes.gov.br/" class="footer-link">BNDS</a></li>
-      <li><a href="http://comdedinerj.blogspot.com/" class="footer-link">COMDEDINE</a></li>
-      <li><a href="https://colymar.webnode.page/" class="footer-link">COLYMAR</a></li>
-    </ul>
+              </ul>
 
-    <div id="footer_location">
-      <h3>Onde Estamos?</h3>
-      <p>Rua Vega 16 loja 20 - Vila Isabel<br>
-      Rio de Janeiro - RJ - CEP: 20540-375</p>
-      <a href="{% url 'contato' %}" class="map-button">Fale Conosco</a>
-    </div>
 
-  </div>
 
-  <div id="footer_copyright">
-    &copy; 2024 all rights reserved
-  </div>
-</footer>
+              <div id="footer_subscribe">
+                  <h3>Onde Estamos?</h3>
 
+                  <p>Rua Vega 16 loja 20 - Vila Isabel
+<br>Rio de Janeiro - RJ - CEP: 20540-375<br></p>
+
+
+                      <a href="{% url 'contato' %}" class="map-button">
+   Fale Conosco
+</a>
+
+              </div>
+
+          </div>
+
+
+          <div id="footer_copyright">
+
+          </div>
+
+        </footer>
     </div>
     <script src="{% static 'js/script.js' %}"></script>
 </body>

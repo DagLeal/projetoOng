@@ -126,8 +126,12 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'  # ou outro servidor
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = 'seu@email.com'
-EMAIL_HOST_PASSWORD = 'sua-senha-ou-app-password'
+EMAIL_HOST_USER = 'dagner.leal@soulasalle.com.br'
+EMAIL_HOST_PASSWORD = 'fmteybtflnyyoxf'
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+CONTACT_EMAIL = 'dagner.leal@soulasalle.com.br'
+
+X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
