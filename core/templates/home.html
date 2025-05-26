@@ -5,8 +5,20 @@
 {% block content %}
 
 
-<h1>Tem que colocar os posts da CADON</h1>
-<script src="https://s.electricblaze.com/widget.js" defer></script>
-<div class="electricblaze-id-2UhxFGr"></div>
+<h2>Siga-nos no Instagram</h2>
+<div id="instafeed" class="instagram-feed"></div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/instafeed.js@1.4.1"></script>
+
+<script>
+    var feed = new Instafeed({
+        accessToken: 'IGQVJ...SEU_TOKEN_AQUI...',  // ⚠️ Coloque aqui o token de acesso
+        limit: 8,
+        template: '<a href="{{link}}" target="_blank"><img src="{{image}}" /></a>'
+    });
+    feed.run();
+</script>
+
 
 {% endblock %}

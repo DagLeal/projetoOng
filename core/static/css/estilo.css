@@ -122,68 +122,64 @@ footer {
   text-decoration: none;
 }
 
-#footer_content{
-  background-color: #00B35F; /* verde da ong */
+#footer_content {
+  background-color: #00B35F;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr); /* Ajuste: 3 colunas */
   padding: 3rem 3.5rem;
+  gap: 2rem; /* espaço entre colunas */
 }
 
-#footer_contacts h1{
+#footer_contacts h1 {
   margin-bottom: 0.75rem;
 }
 
-#footer_social_media{
+#footer_social_media {
   display: flex;
-  gap: 2rem;
-  margin-top: 1.5rem;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
-#footer_social_media .footer-link{
+#footer_social_media .footer-link {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 2.5rem;
   width: 2.5rem;
-    color: #F0F1F8; /* var(--color-neutral-40) */
+  color: #F0F1F8;
   border-radius: 50%;
-  transition: all 0.9s;
+  transition: all 0.3s ease;
 }
 
-#footer_social_media .footer-link i{
-  font-size: 1.25rem;
+#footer_social_media .footer-link:hover {
+  opacity: 0.8;
 }
 
-#footer_social_media .footer-link:hover{
-  opacity: 0.9;
-}
-
-
-#instagram{
+#instagram {
   background: linear-gradient(#833ab4, #fd1d1d, #fcb045);
 }
 
-#facebook{
+#facebook {
   background-color: #4267b3;
 }
 
-#whatsapp{
+#whatsapp {
   background-color: #25d366;
 }
 
-.footer-list{
+.footer-list {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
   list-style: none;
 }
 
-.footer-list .footer-link{
-   color: #c4c4c4; /* var(--color-neutral-30) -> cinza mais claro */
-  transition: all 0.9s;
+.footer-list .footer-link {
+  color: #c4c4c4;
+  transition: color 0.3s ease;
 }
 
-.footer-list .footer-link:hover{
+.footer-list .footer-link:hover {
   color: gold;
 }
 
@@ -350,6 +346,31 @@ footer {
 .right-side .input-box textarea {
   padding-top: 6px;
 }
+
+.myButton {
+  background-color: #F58634; /* LARANJA */
+  border-radius: 28px;
+  border: none;
+  display: inline-block;
+  cursor: pointer;
+  color: #ffffff; /* texto branco */
+  font-size: 16px;
+  padding: 11px 52px;
+  text-decoration: none;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.myButton:hover {
+  background-color: #e76f1c; /* laranja um pouco mais escura */
+  transform: translateY(-2px);
+}
+
+.myButton:active {
+  transform: translateY(1px);
+}
+
+
 
 .right-side .myButton {
   background-color:#00B35F;
@@ -552,18 +573,45 @@ footer {
 }
 /*Botão de Redirecionamento Footer*/
 .map-button {
-    display: inline-block;
-    padding: 12px 24px;
-    background-color: #00B35F; /* verde da ONG */
-    color: #fff;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background-color: #00B35F;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-top: 1rem;
 }
 
 .map-button:hover {
-    background-color: #009e54; /* verde um pouco mais escuro */
-    transform: translateY(-2px);
+  background-color: #009e54;
+  transform: translateY(-2px);
+}
+
+#footer_location p {
+  color: #c4c4c4;
+  margin-top: 0.5rem;
+}
+/*Tela Instagram Pag Home*/
+
+.instagram-feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.instagram-feed img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.instagram-feed img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
