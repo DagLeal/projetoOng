@@ -1,7 +1,7 @@
 from django import forms
+from .models import Doacao
 
-
-class DoacaoForm(forms.Form):
-    valor = forms.IntegerField(min_value=1, label="Valor (R$)")
-    cpf = forms.CharField(max_length=14, required=False, label="CPF (opcional)")
-
+class DoacaoForm(forms.ModelForm):
+    class Meta:
+        model = Doacao
+        fields = ['nome', 'email', 'cpf', 'valor']

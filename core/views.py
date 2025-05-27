@@ -7,38 +7,52 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib import messages
-
-def gerar_qr_code_pix(request, doacao_id):
-    doacao = Doacao.objects.get(id=doacao_id)
-
-    # Substitua por sua chave PIX e dados reais
-    chave_pix = '981107467'
-    nome_recebedor = 'Dagner'
-    cidade = 'Niterói'
-    valor = f'{doacao.valor:.2f}'
-
-    payload = f"""
-000201
-26580014BR.GOV.BCB.PIX0114{chave_pix}
-52040000
-5303986
-540{len(valor):02}{valor}
-5802BR
-5914{nome_recebedor[:14]}
-6010{cidade[:10]}
-62100506abcde
-6304
-""".strip().replace('\n', '')
-
-    # Gerar imagem do QR Code
-    qr = qrcode.make(payload)
-    buffer = BytesIO()
-    qr.save(buffer, format='PNG')
-    buffer.seek(0)
-
-    return HttpResponse(buffer.getvalue(), content_type='image/png')
+from .forms import DoacaoForm
+from django.core.files.base import ContentFile
+from django.utils import timezone
+import base64
 
 
+def gerar_pix_code(valor):
+    chave_pix = "seu_email@provedor.com"
+    nome_recebedor = "Nome ONG"
+    cidade = "RIO"
+    return f"00020126360014BR.GOV.BCB.PIX0114{chave_pix}520400005303986540{float(valor):.2f}5802BR5913{nome_recebedor}6009{cidade}62180515SiteCADON2023"
+
+def doacao(request):
+    context = {}
+    if request.method == 'POST':
+        nome = request.POST.get('nome')
+        email = request.POST.get('email')
+        cpf = request.POST.get('cpf')
+        valor = request.POST.get('valor')
+
+        # Gera código Pix
+        pix_code = gerar_pix_code(valor)
+
+        # Gera QR code
+        qr = qrcode.make(pix_code)
+        buffered = BytesIO()
+        qr.save(buffered, format="PNG")
+        qr_base64 = base64.b64encode(buffered.getvalue()).decode()
+
+        # Salva no banco
+        Doacao.objects.create(
+            nome=nome,
+            email=email,
+            cpf=cpf,
+            valor=valor,
+            data_hora=timezone.now()
+        )
+
+        context = {
+            'qr_code': qr_base64,
+            'nome': nome,
+            'valor_doado': valor,
+            'pix_code': pix_code
+        }
+
+    return render(request, 'doacao.html', context)
 # Create your views here.
 
 

@@ -23,11 +23,10 @@ class DocumentoAdmin(admin.ModelAdmin):
 
     preview.short_description = "Pré-visualização"
 
-
 @admin.register(Doacao)
 class DoacaoAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'email', 'cpf', 'valor', 'data_transacao')
-    search_fields = ('nome', 'cpf')
+    list_display = ('nome', 'email', 'cpf', 'valor', 'data_hora')
+
 
 
 @admin.register(Noticia)
