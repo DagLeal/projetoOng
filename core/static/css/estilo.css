@@ -11,13 +11,7 @@
   font-family: "Poppins", sans-serif;
 }
 
-/*Header alterado*/
-
-
-/*Alterei o código colocando responsividade, porém o header buga, acredito que seja por causa do efeito que o header faz ao "rolar" a página para baixo.
-Não consegui corrijir, mas tá responsivo ;)
-Qualquer coisa é só pegar o código original que irei deixar comentado após meu header alterado -Vitor
- */
+/*Header */
 
 header {
   position: fixed;
@@ -52,7 +46,6 @@ header.shrink {
 
 .logo img {
   height: 80%;
-  max-height: 70px;
   transition: all 0.3s ease;
 }
 
@@ -107,168 +100,6 @@ header.shrink {
   flex-direction: column;
   min-height: 100vh;
 }
-
-/*
-   RESPONSIVIDADE HEADER (TABLET/CELULAR)
-    */
-
-/* Tablet (até 768px) */
-@media (max-width: 768px) {
-  header {
-    height: auto;
-    font-size: 18px;
-  }
-
-  .header-content {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 10px 20px;
-    gap: 10px;
-  }
-
-  .logo img {
-    max-height: 60px;
-  }
-
-  .navbar .menu {
-    flex-direction: column;
-    width: 100%;
-    gap: 10px;
-  }
-
-  .navbar .menu li {
-    width: 100%;
-  }
-
-  .navbar .menu li a {
-    padding: 8px 0;
-    display: block;
-    width: 100%;
-  }
-
-  .dropdown-menu {
-    position: static;
-    box-shadow: none;
-    display: none;
-  }
-
-  .dropdown:hover .dropdown-menu {
-    display: block;
-  }
-}
-
-/* Celular (até 480px) */
-@media (max-width: 480px) {
-  header {
-    height: auto;
-    font-size: 16px;
-  }
-
-  .logo img {
-    max-height: 50px;
-  }
-
-  .navbar .menu {
-    gap: 8px;
-  }
-
-  .navbar .menu li a {
-    font-size: 14px;
-  }
-}
-
-/*HEADER ORIGINAL*/
-
-/*header {*/
-/*  position: fixed;*/
-/*  top: 0;*/
-/*  left: 0;*/
-/*  width: 100%;*/
-/*  height: 17vh;*/
-/*  background-color: white;*/
-/*  transition: height 0.3s ease;*/
-/*  z-index: 1000;*/
-/*  box-shadow: 0 2px 4px rgba(0,0,0,0.1);*/
-/*  font-size: 22px;*/
-/*}*/
-
-/*header.shrink {*/
-/*  height: 5vh;*/
-/*}*/
-
-/*.header-content {*/
-/*  display: flex;*/
-/*  align-items: flex-end;*/
-/*  justify-content: space-between;*/
-/*  height: 100%;*/
-/*  padding: 6px 40px;*/
-/*}*/
-
-/*.navbar .menu {*/
-/*  list-style: none;*/
-/*  display: flex;*/
-/*  gap: 20px;*/
-/*}*/
-
-/*.navbar .menu li {*/
-/*  position: relative;*/
-/*}*/
-
-/*.navbar .menu li a {*/
-/*  text-decoration: none;*/
-/*  color: #EB3135;*/
-/*  padding: 10px;*/
-/*}*/
-
-/*.navbar .menu li a:hover {*/
-/*  color: #F58634;*/
-/*  transition: color 0.1s ease;*/
-/*}*/
-
-/*.menu a {*/
-/*  text-decoration: none;*/
-/*  color: #EB3135;*/
-/*  font-weight: 500;*/
-/*  padding-bottom: 10px;*/
-/*}*/
-
-/*.dropdown-menu {*/
-/*  display: none;*/
-/*  position: absolute;*/
-/*  background-color: #fff;*/
-/*  top: 100%;*/
-/*  left: 0;*/
-/*  box-shadow: 0 2px 5px rgba(0,0,0,0.2);*/
-/*  list-style: none;*/
-/*  min-width: 150px;*/
-/*  z-index: 1001;*/
-/*}*/
-
-/*.dropdown:hover .dropdown-menu {*/
-/*  display: block;*/
-/*}*/
-
-/*.dropdown-menu li a {*/
-/*  padding: 10px 15px;*/
-/*  display: block;*/
-/*}*/
-
-/*.logo {*/
-/*  flex: 0 0 10%; !* 10% da largura *!*/
-/*}*/
-
-/*.logo img {*/
-/*  height: 80%; !* ajuste conforme necessário *!*/
-/*  transition: all 0.3s ease;*/
-/*}*/
-
-/*.page-wrapper {*/
-/*  display: flex;*/
-/*  flex-direction: column;*/
-/*  min-height: 100vh;*/
-/*}*/
-
-
 
 /*Main*/
 
@@ -399,9 +230,53 @@ footer {
   font-weight: 100;
 }
 
+/* Botão de Redirecionamento Footer */
+.map-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 24px;
+  background-color: #00B35F;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  margin-top: 1rem;
+}
+
+.map-button:hover {
+  background-color: #009e54;
+  transform: translateY(-2px);
+}
+
+#footer_location p {
+  color: #c4c4c4;
+  margin-top: 0.5rem;
+}
+
 /* Home*/
 
+/*Tela Instagram Pag Home*/
 
+.instagram-feed {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.instagram-feed img {
+    width: 100%;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.instagram-feed img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
 
 /* Contato */
 
@@ -536,8 +411,6 @@ footer {
   transform: translateY(1px);
 }
 
-
-
 .right-side .myButton {
   background-color:#00B35F;
   border-radius:28px;
@@ -612,81 +485,40 @@ footer {
   margin-top: 30px;
 }
 
-/* RESPONSIVIDADE ------------------------------------------ */
+/* Presidente */
 
-@media (max-width: 768px) {
-  #extra-catalogo{
-      margin-top: 20px;
-      width: 100%;
-      max-width: 40rem;
-      max-height: 20rem;
-      border-radius: 10px;
-      margin-left: 0;
-  }
+.about-us {
+    margin-top: 150px;
+    padding-bottom: 150px;
+}
 
-  #plus-now{
-    margin-top: 20px;
-    width: 100%;
-    max-width: 40rem;
-    max-height: 20rem;
+.container {
+    display: flex;
+    max-width: 1400px;
+    margin: auto;
+    align-items: center;
+
+}
+
+.text-about {
+    font-family: "Poppins", sans-serif;
+}
+
+.divisao{
+    padding: 100px;
+}
+
+.img-about>img {
+    width: 30rem;
     border-radius: 10px;
-  }
-
+    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    margin-left: 20px;
+    margin-top: -20px;
 }
 
-@media (max-width: 950px){
-  .container{
-    width: 90%;
-    padding: 30px 40px 40px 35px;
-  }
-
-  .container .content .right-side{
-    width: 75%;
-    margin-left: 55px;
-  }
-}
-
-@media (max-width: 820px){
-  .container{
-    margin: 40px 0;
-    height: 100%;
-  }
-
-  .container content{
-    flex-direction: column-reverse;
-  }
-
-  .container{
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    flex-wrap: wrap;
-  }
-
-  .container .content .left-side::before{
-    display: none;
-  }
-
-  .container .content .right-side{
-    width: 100%;
-    margin-left: 0;
-  }
-}
-
-
-/* resp do footer */
-@media screen and (max-width: 768px) {
-  #footer_content{
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-  }
-}
-
-@media screen and (max-width: 426px) {
-  #footer_content {
-    grid-template-columns: repeat(1, 1fr);
-    padding: 3rem 2rem;
-  }
+.about-text1 {
+    margin-top: 20px;
+    margin-bottom: 30px;
 }
 
 /* História */
@@ -736,31 +568,6 @@ footer {
   .historia-grid {
     grid-template-columns: 1fr;
   }
-}
-/*Botão de Redirecionamento Footer*/
-.map-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 24px;
-  background-color: #00B35F;
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: 600;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  margin-top: 1rem;
-}
-
-.map-button:hover {
-  background-color: #009e54;
-  transform: translateY(-2px);
-}
-
-#footer_location p {
-  color: #c4c4c4;
-  margin-top: 0.5rem;
 }
 
 /*Parceiros*/
@@ -903,182 +710,207 @@ footer {
     padding: 0 20px;
 }
 
-/*Tela Instagram Pag Home*/
 
-.instagram-feed {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-    gap: 15px;
-    margin-top: 20px;
+
+/*--------------------------------- RESPONSIVIDADE ------------------------------------------ */
+
+@media (max-width: 950px){
+  .container{
+    width: 90%;
+    padding: 30px 40px 40px 35px;
+  }
+  .container .content .right-side{
+    width: 75%;
+    margin-left: 55px;
+  }
+
+  /* Header */
+  header {
+    height: 12vh !important; /* altura fixa para mobile */
+  }
+  header.shrink {
+    height: 12vh !important; /* força a altura constante */
+  }
+  .logo img {
+    height: 50% !important; /* reduz imagem no mobile */
+  }
+  .header-content {
+    padding: 6px 20px; /* reduz padding horizontal */
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .navbar .menu {
+    gap: 10px;
+    font-size: 18px;
+  }
 }
 
-.instagram-feed img {
+@media (max-width: 820px){
+  .container{
+    margin: 40px 0;
+    height: 100%;
+  }
+
+  .container content{
+    flex-direction: column-reverse;
+  }
+
+  .container{
     width: 100%;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .container .content .left-side::before{
+    display: none;
+  }
+
+  .container .content .right-side{
+    width: 100%;
+    margin-left: 0;
+  }
 }
-
-.instagram-feed img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-}
-
-/* Incio CSS da PRESIDENTE ------------------------------------------------------------------- */
-
-* {
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
-}
-
-.about-us {
-    margin-top: 150px;
-    padding-bottom: 150px;
-}
-
-.container {
-    display: flex;
-    max-width: 1400px;
-    margin: auto;
-    align-items: center;
-
-}
-
-.text-about {
-    font-family: "Poppins", sans-serif;
-}
-
-.divisao{
-    padding: 100px;
-}
-
-.img-about>img {
-    width: 30rem;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-    margin-left: 20px;
-    margin-top: -20px;
-}
-
-.about-text1 {
-    margin-top: 20px;
-    margin-bottom: 30px;
-}
-
-/* Incio CSS da PRESIDENTE ------------------------------------------------------------------- */
-
-* {
-    padding: 0px;
-    margin: 0px;
-    box-sizing: border-box;
-}
-
-.about-us {
-    margin-top: 150px;
-    padding-bottom: 150px;
-}
-
-.container {
-    display: flex;
-    max-width: 1400px;
-    margin: auto;
-    align-items: center;
-
-}
-
-.text-about {
-    font-family: "Poppins", sans-serif;
-}
-
-.divisao{
-    padding: 100px;
-}
-
-.img-about>img {
-    width: 30rem;
-    border-radius: 10px;
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-    margin-left: 20px;
-    margin-top: -20px;
-}
-
-.about-text1 {
-    margin-top: 20px;
-    margin-bottom: 30px;
-}
-
-/* Responsividade da presidente ------------------------------------------------------------------------- */
 
 @media (max-width: 768px) {
+  #extra-catalogo{
+    margin-top: 20px;
+    width: 100%;
+    max-width: 40rem;
+    max-height: 20rem;
+    border-radius: 10px;
+    margin-left: 0;
+  }
 
-.container {
+  #plus-now{
+    margin-top: 20px;
+    width: 100%;
+    max-width: 40rem;
+    max-height: 20rem;
+    border-radius: 10px;
+  }
 
-flex-direction: column;
+  /* Footer */
+  #footer_content{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
 
-align-items: center;
+  /* Header */
+  header {
+    height: auto;
+    font-size: 18px;
+  }
 
-}
+  .header-content {
+    align-items: flex-start;
+    padding: 10px 20px;
+    gap: 10px;
+  }
 
-.divisao {
+  .logo img {
+    max-height: 60px;
+  }
 
+  .navbar .menu {
+    width: 100%;
+    gap: 10px;
+  }
+
+  .navbar .menu li {
+    width: 100%;
+  }
+
+  .navbar .menu li a {
+    padding: 8px 0;
+    display: block;
+    width: 100%;
+  }
+
+  .dropdown-menu {
+    position: static;
+    box-shadow: none;
+    display: none;
+  }
+
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+
+  /* Presidente */
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .divisao {
     padding: 20px;
     flex: 0 0 100%;
-    }
+  }
 
-    .text-about {
-
+  .text-about {
     text-align: center;
     flex: 1;
     padding: 20px;
-    }
+  }
 
-    .img-about {
+  .img-about {
     margin-left: -105px;
     margin-top: 20px;
     width: 100%;
     max-width: 40rem;
     border-radius: 10px;
-    }
+  }
+
 }
 
 @media (max-width: 480px) {
+  /* Header */
+  header {
+    height: auto;
+    font-size: 16px;
+  }
+  .logo img {
+    max-height: 50px;
+  }
+  .navbar .menu {
+    gap: 8px;
+  }
+  .navbar .menu li a {
+    font-size: 14px;
+  }
 
+
+  /* Footer */
+  #footer_content {
+    grid-template-columns: repeat(1, 1fr);
+    padding: 3rem 2rem;
+  }
+
+  /* Presidente */
   .about-us {
     margin-top: 100px;
   }
-
   .about-text1, .about-text2 {
-
     font-size: 0.9rem;
-
-
-    .container {
-
-      flex-direction: column;
-
-      align-items: center;
-
-    }
-
-    .divisao {
-
-      padding: 10px;
-      flex: 0 0 100%;
-    }
-
-    .text-about {
-
-      text-align: center;
-      flex: 1;
-      padding: 10px;
-    }
-
-    .img-about {
-
-      margin-top: 10px;
-      width: 100%;
-      max-width: 20rem;
-      border-radius: 10px;
-    }
+  }
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .divisao {
+    padding: 10px;
+    flex: 0 0 100%;
+  }
+  .text-about {
+    text-align: center;
+    flex: 1;
+    padding: 10px;
+  }
+  .img-about {
+    margin-top: 10px;
+    width: 100%;
+    max-width: 20rem;
+    border-radius: 10px;
   }
 }
