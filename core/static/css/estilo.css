@@ -530,7 +530,7 @@ footer {
 }
 
 .titulo {
-  font-size: 2.5rem;
+  font-size: 3em;
   color: #00B35F; /* verde da ONG */
   text-align: center;
   margin-bottom: 30px;
@@ -600,7 +600,6 @@ footer {
 
 .parceiros-titulo {
     padding-top: 30px;
-    font-size: 3em;
     color: #F58634;
     margin-bottom: 40px;
 }
