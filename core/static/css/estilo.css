@@ -976,3 +976,74 @@ footer {
     border: 1px solid #ccc;
     padding: 5px;
 }
+
+
+/* Parceiros*/
+
+/*Responsividade para tablet*/
+@media (max-width: 768px) {
+  .parceiro {
+    flex-direction: column !important;
+    margin: 30px 0;
+    text-align: center;
+  }
+  .parceiro img {
+    width: 100%;
+    max-width: 440px;
+    margin: 0 0 20px;
+  }
+  .conteudo-parceiros {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  .parceiros-titulo {
+    margin-bottom: 30px;
+    font-size: 1.8em;
+  }
+  .nome-parceiro {
+    font-size: 1.8em;
+  }
+  .link-parceiro {
+    font-size: 1em;
+  }
+  .texto-parceiro {
+    font-size: 1.1em;
+    line-height: 1.4;
+  }
+  .linha-parceiro {
+    width: 80%;
+  }
+}
+
+/* Responsividade para Celular  */
+@media (max-width: 480px) {
+  .parceiro {
+    margin: 20px 0;
+  }
+  .parceiro img {
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
+  .conteudo-parceiros {
+    padding: 0 15px;
+  }
+  .parceiros-titulo {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  .nome-parceiro {
+    font-size: 1.5em;
+  }
+  .link-parceiro {
+    font-size: 0.95em;
+  }
+  .texto-parceiro {
+    font-size: 1em;
+    line-height: 1.3;
+  }
+  .linha-parceiro {
+    width: 90%;
+  }
+}
+
+
