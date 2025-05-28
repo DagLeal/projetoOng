@@ -14,22 +14,20 @@
                 {% for imagem in projeto.imagens.all %}
                 <div class="slide">
                     <img src="{{ imagem.imagem.url }}" alt="{{ imagem.titulo }}">
-                    {% if imagem.titulo %}
-                    <div class="imagem-titulo">{{ imagem.titulo }}</div>
-                    {% endif %}
                 </div>
                 {% endfor %}
             </div>
+            {% if projeto.imagens.all.count > 1 %}  <!-- Only show arrows if more than 1 image -->
             <button class="prev" onclick="moveSlide('{{ forloop.counter }}', -1)">❮</button>
             <button class="next" onclick="moveSlide('{{ forloop.counter }}', 1)">❯</button>
+            {% endif %}
         </div>
         {% endif %}
-
-        <p class="texto-projeto">{{ projeto.texto }}</p>
         {% if projeto.link %}
         <p><a href="{{ projeto.link }}" target="_blank">{{ projeto.link }}</a></p>
         {% endif %}
+        <p class="texto-projeto">{{ projeto.texto }}</p>
     </div>
 {% endfor %}
-
+<script src="{% static 'js/script.js' %}"></script>
 {% endblock %}

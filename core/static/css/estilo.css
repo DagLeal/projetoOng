@@ -637,76 +637,102 @@ footer {
 /*Projetos*/
 
 .projeto {
-    margin-bottom: 60px;
+  max-width: 65%; /* Limits width to 65% of parent */
+  margin: 0 auto 80px; /* Centers the container */
+  border-bottom: 1px solid #eee; /* Light separator between projects */
+  padding-bottom: 40px; /* Spacing below each project */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Soft shadow (optional) */
 }
 
 .titulo-projeto {
     font-size: 28px;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     text-align: center;
+}
+
+.projeto a {
+    display: block; /* Makes the link occupy full width */
+    text-align: center; /* Centers the text */
+    margin-top: 15px; /* Adds spacing above the link */
+    color: #0066cc; /* Optional: Link color */
+    text-decoration: none; /* Optional: Removes underline */
+}
+
+.projeto a:hover {
+    text-decoration: underline; /* Optional: Underline on hover */
 }
 
 .carousel-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 30px auto;
 }
 
 .carousel {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 100%; /* Add this */
 }
 
 .slide {
-    min-width: 100%;
-    position: relative;
+  min-width: 100%;
+  position: relative;
+  flex-shrink: 0; /* Add this to prevent shrinking */
 }
 
 .slide img {
-    width: 100%;
-    height: auto;
-    display: block;
+  width: 100%;
+  height: auto;
+  max-height: 500px; /* Prevents overly tall images */
+  object-fit: contain; /* Ensures images fit without stretching */
+  display: block;
 }
 
 .imagem-titulo {
-    position: absolute;
-    bottom: 20px;
-    left: 0;
-    right: 0;
-    background-color: rgba(128, 128, 128, 0.7);
-    color: white;
-    padding: 10px;
-    text-align: center;
-    font-size: 18px;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  background-color: rgba(128, 128, 128, 0.7);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
 }
 
 .prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    font-size: 24px;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 1;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+  transition: all 0.3s ease;
+  opacity: 0.7;
 }
 
 .prev {
-    left: 10px;
+  left: 10px;
 }
 
 .next {
-    right: 10px;
+  right: 10px;
 }
 
+
 .texto-projeto {
-    font-size: 18px;
-    margin-top: 20px;
-    text-align: justify;
-    padding: 0 20px;
+  font-size: 18px;
+  margin-top: 30px;
+  text-align: justify;
+  padding: 0 20px;
+  line-height: 1.6; /* Better text readability */
 }
 
 

@@ -82,7 +82,8 @@ def presidencia(request):
 
 
 def projetos(request):
-    return render(request, 'projetos.html')
+    projetos = Projeto.objects.prefetch_related('imagens')
+    return render(request, 'projetos.html', {'projetos': projetos})
 
 
 def parceiros(request):
@@ -135,8 +136,3 @@ def enviar_contato(request):
         return redirect('contato')  # redirecione para a mesma página ou outra
 
     return redirect('contato')
-
-
-def projetos_view(request):
-    projetos = Projeto.objects.prefetch_related('imagens').all()
-    return render(request, 'projetos.html', {'projetos': projetos})
