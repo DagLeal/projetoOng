@@ -1,5 +1,5 @@
 import qrcode
-from io import BytesIO
+import io
 from django.http import HttpResponse
 from .models import Doacao, Documento, Parceiro, Projeto
 from django.core import serializers
@@ -11,30 +11,39 @@ from .forms import DoacaoForm
 from django.core.files.base import ContentFile
 from django.utils import timezone
 import base64
+from pypix.pix import Pix
 
+def gerar_pix_com_pypix(valor):
+    pix = Pix()
+    pix.set_merchant_name("Dagner Costa Leal")
+    pix.set_merchant_city("Rio de Janeiro")
+    pix.set_pixkey("05782543795")  # sua chave Pix
+    pix.set_amount(float(valor))   # valor precisa ser float
+    pix.set_description("Doação via Site CADON")
+    pix.set_txid("DOACAO123")  # um identificador qualquer
 
-def gerar_pix_code(valor):
-    chave_pix = "seu_email@provedor.com"
-    nome_recebedor = "Nome ONG"
-    cidade = "RIO"
-    return f"00020126360014BR.GOV.BCB.PIX0114{chave_pix}520400005303986540{float(valor):.2f}5802BR5913{nome_recebedor}6009{cidade}62180515SiteCADON2023"
+    # Gera o código EMV do Pix
+    brcode = str(pix)
+
+    # Gera o QR Code e salva em buffer de memória
+    qr = qrcode.make(brcode)
+    buffer = io.BytesIO()
+    qr.save(buffer, format="PNG")
+    qr_base64 = base64.b64encode(buffer.getvalue()).decode()
+
+    return brcode, qr_base64
 
 def doacao(request):
     context = {}
+
     if request.method == 'POST':
         nome = request.POST.get('nome')
         email = request.POST.get('email')
         cpf = request.POST.get('cpf')
         valor = request.POST.get('valor')
 
-        # Gera código Pix
-        pix_code = gerar_pix_code(valor)
-
-        # Gera QR code
-        qr = qrcode.make(pix_code)
-        buffered = BytesIO()
-        qr.save(buffered, format="PNG")
-        qr_base64 = base64.b64encode(buffered.getvalue()).decode()
+        # Gera código Pix e QR code com pypix
+        pix_code, qr_base64 = gerar_pix_com_pypix(valor)
 
         # Salva no banco
         Doacao.objects.create(
@@ -126,10 +135,6 @@ def enviar_contato(request):
         return redirect('contato')  # redirecione para a mesma página ou outra
 
     return redirect('contato')
-
-
-def doacao(request):
-    return render(request, 'doacao.html')
 
 
 def projetos_view(request):

@@ -17,7 +17,6 @@ class Documento(models.Model):
             return 'planilha'
         return 'outro'
 
-from django.db import models
 
 class Doacao(models.Model):
     nome = models.CharField(max_length=100)
@@ -29,8 +28,6 @@ class Doacao(models.Model):
 
     def __str__(self):
         return f"{self.nome} - R$ {self.valor}"
-
-
 
 
 class Noticia(models.Model):
