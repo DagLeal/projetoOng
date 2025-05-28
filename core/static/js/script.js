@@ -63,20 +63,38 @@ document.addEventListener('DOMContentLoaded', function () {
     select.addEventListener("change", mostrarDocumento);
     if (select.value) mostrarDocumento();
 
-    /* Carrossel dos Projetos */
-    const carrosseis = document.querySelectorAll('.carousel');
+    document.querySelectorAll('.carousel').forEach(carousel => {
+        const slides = carousel.querySelectorAll('.slide');
+        const container = carousel.closest('.carousel-container');
 
-    carrosseis.forEach((carousel, index) => {
-        carousel.dataset.index = 0;
+        if (container && slides.length <= 1) {
+            const prevBtn = container.querySelector('.prev');
+            const nextBtn = container.querySelector('.next');
+            if (prevBtn) prevBtn.style.display = 'none';
+            if (nextBtn) nextBtn.style.display = 'none';
+        }
+    });
+});
+
+window.moveSlide = function(carrosselId, direction) {
+    const carousel = document.getElementById(`carousel-${carrosselId}`);
+    if (!carousel) return;
+
+    const slides = carousel.querySelectorAll('.slide');
+    let currentIndex = parseInt(carousel.dataset.currentSlide || 0);
+
+    // Pause all videos in this carousel before sliding
+    carousel.querySelectorAll('video').forEach(video => {
+        video.pause();
     });
 
-    window.moveSlide = function (carrosselId, direction) {
-        const carousel = document.getElementById(`carousel-${carrosselId}`);
-        const slides = carousel.querySelectorAll('.slide');
-        let index = parseInt(carousel.dataset.index);
+    currentIndex = (currentIndex + direction + slides.length) % slides.length;
+    carousel.dataset.currentSlide = currentIndex;
+    carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
 
-        index = (index + direction + slides.length) % slides.length;
-        carousel.dataset.index = index;
-        carousel.style.transform = `translateX(-${index * 100}%)`;
-    };
-});
+    // Autoplay the newly visible video
+    const currentVideo = slides[currentIndex].querySelector('video');
+    if (currentVideo) {
+        currentVideo.play().catch(e => console.log("Autoplay prevented:", e));
+    }
+};

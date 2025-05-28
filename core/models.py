@@ -18,28 +18,6 @@ class Documento(models.Model):
         return 'outro'
 
 
-class Doacao(models.Model):
-    nome = models.CharField(max_length=100)
-    email = models.EmailField()
-    cpf = models.CharField(max_length=14)
-    valor = models.DecimalField(max_digits=10, decimal_places=2)
-    data_hora = models.DateTimeField(auto_now_add=True)
-    qr_code = models.ImageField(upload_to='qr_codes/', blank=True)
-
-    def __str__(self):
-        return f"{self.nome} - R$ {self.valor}"
-
-
-class Noticia(models.Model):
-    titulo = models.CharField(max_length=255)
-    materia = models.TextField()
-    data_publicacao = models.DateField()
-    imagem = models.ImageField(upload_to='noticias/')
-
-    def __str__(self):
-        return self.titulo
-
-
 class Parceiro(models.Model):
     nome = models.CharField(max_length=255)
     imagem = models.ImageField(upload_to='parceiros/')
@@ -65,3 +43,17 @@ class ImagemProjeto(models.Model):
 
     def __str__(self):
         return self.titulo or f"Imagem de {self.projeto.nome}"
+
+class MediaProjeto(models.Model):
+    MEDIA_TYPES = (
+        ('image', 'Image'),
+        ('video', 'Video'),
+    )
+    projeto = models.ForeignKey('Projeto', on_delete=models.CASCADE, related_name='media')
+    media_type = models.CharField(max_length=5, choices=MEDIA_TYPES)
+    arquivo = models.FileField(upload_to='projetos/')
+    titulo = models.CharField(max_length=200, blank=True)
+    thumbnail = models.ImageField(upload_to='thumbnails/', blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.media_type} - {self.titulo}"

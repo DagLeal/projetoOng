@@ -637,78 +637,206 @@ footer {
 /*Projetos*/
 
 .projeto {
-    margin-bottom: 60px;
+  max-width: 65%; /* Limits width to 65% of parent */
+  margin: 0 auto 80px; /* Centers the container */
+  border-bottom: 1px solid #eee; /* Light separator between projects */
+  padding-bottom: 40px; /* Spacing below each project */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Soft shadow (optional) */
 }
 
 .titulo-projeto {
-    font-size: 28px;
-    margin-bottom: 20px;
-    text-align: center;
+  font-size: 28px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #EB3135;
+}
+
+.projeto a {
+    display: block; /* Makes the link occupy full width */
+    text-align: center; /* Centers the text */
+    margin-top: 15px; /* Adds spacing above the link */
+    color: #0066cc; /* Optional: Link color */
+    text-decoration: none; /* Optional: Removes underline */
+}
+
+.projeto a:hover {
+    text-decoration: underline; /* Optional: Underline on hover */
 }
 
 .carousel-container {
-    position: relative;
-    width: 100%;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  max-width: 100%;
+  margin: 30px auto;
 }
 
 .carousel {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    width: 100%;
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+  height: 100%; /* Add this */
 }
 
 .slide {
-    min-width: 100%;
-    position: relative;
+  min-width: 100%;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0; /* Add this to prevent shrinking */
 }
 
 .slide img {
-    width: 100%;
-    height: auto;
-    display: block;
+  width: 100%;
+  height: auto;
+  max-height: 500px; /* Prevents overly tall images */
+  object-fit: contain; /* Ensures images fit without stretching */
+  display: block;
 }
 
 .imagem-titulo {
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  right: 0;
+  background-color: rgba(128, 128, 128, 0.7);
+  color: white;
+  padding: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.prev, .next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+  border: none;
+  font-size: 24px;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 1;
+  transition: all 0.3s ease;
+  opacity: 0.7;
+}
+
+.prev {
+  left: 10px;
+}
+
+.next {
+  right: 10px;
+}
+
+.slide video {
+  width: 100%;
+  max-height: 500px;
+  object-fit: contain;
+  background: #000; /* Black background for videos */
+  aspect-ratio: 16/9;
+}
+
+.slide video:not([poster]) {
+    background: linear-gradient(45deg, #222 25%, #333 50%, #222 75%);
+    background-size: 200% 200%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.video-wrapper {
+    position: relative;
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+.media-titulo {
     position: absolute;
     bottom: 20px;
     left: 0;
     right: 0;
-    background-color: rgba(128, 128, 128, 0.7);
+    background-color: rgba(0, 0, 0, 0.7);
     color: white;
     padding: 10px;
     text-align: center;
     font-size: 18px;
 }
 
-.prev, .next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(0,0,0,0.5);
-    color: white;
-    border: none;
-    font-size: 24px;
-    padding: 10px;
-    cursor: pointer;
-    z-index: 1;
-}
-
-.prev {
-    left: 10px;
-}
-
-.next {
-    right: 10px;
-}
-
 .texto-projeto {
-    font-size: 18px;
-    margin-top: 20px;
-    text-align: justify;
-    padding: 0 20px;
+  font-size: 18px;
+  margin-top: 30px;
+  text-align: justify;
+  padding: 0 20px;
+  line-height: 1.6; /* Better text readability */
+  color: #00B35F;
 }
 
+/*Doação*/
+.doacao-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 30px;
+    margin: 50px auto;
+    max-width: 1000px;
+}
+
+.form-area, .qr-area {
+    background: #fff;
+    padding: 20px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex: 1;
+}
+
+.form-area h1, .qr-area h2 {
+    color: #00B35F;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.myButton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #F58634;
+    color: white;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+.myButton:hover {
+    background-color: #d96a1f;
+}
+
+.qr-area img {
+    width: 200px;
+    height: 200px;
+    margin-top: 15px;
+    border: 1px solid #ccc;
+    padding: 5px;
+}
 
 
 /*--------------------------------- RESPONSIVIDADE ------------------------------------------ */
@@ -742,6 +870,7 @@ footer {
     gap: 10px;
     font-size: 18px;
   }
+
 }
 
 @media (max-width: 820px){
@@ -861,6 +990,39 @@ footer {
     border-radius: 10px;
   }
 
+  /* Parceiros*/
+  .parceiro {
+    flex-direction: column !important;
+    margin: 30px 0;
+    text-align: center;
+  }
+  .parceiro img {
+    width: 100%;
+    max-width: 440px;
+    margin: 0 0 20px;
+  }
+  .conteudo-parceiros {
+    max-width: 100%;
+    padding: 0 20px;
+  }
+  .parceiros-titulo {
+    margin-bottom: 30px;
+    font-size: 1.8em;
+  }
+  .nome-parceiro {
+    font-size: 1.8em;
+  }
+  .link-parceiro {
+    font-size: 1em;
+  }
+  .texto-parceiro {
+    font-size: 1.1em;
+    line-height: 1.4;
+  }
+  .linha-parceiro {
+    width: 80%;
+  }
+
 }
 
 @media (max-width: 480px) {
@@ -878,7 +1040,6 @@ footer {
   .navbar .menu li a {
     font-size: 14px;
   }
-
 
   /* Footer */
   #footer_content {
@@ -912,111 +1073,10 @@ footer {
     max-width: 20rem;
     border-radius: 10px;
   }
-}
-/*Doação*/
-.doacao-container {
-    display: flex;
-    justify-content: space-around;
-    align-items: flex-start;
-    gap: 30px;
-    margin: 50px auto;
-    max-width: 1000px;
-}
 
-.form-area, .qr-area {
-    background: #fff;
-    padding: 20px 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-    flex: 1;
-}
-
-.form-area h1, .qr-area h2 {
-    color: #00B35F;
-    margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-.form-group label {
-    display: block;
-    font-weight: 600;
-    margin-bottom: 5px;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 8px 12px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-}
-
-.myButton {
-    display: inline-block;
-    padding: 10px 20px;
-    background-color: #F58634;
-    color: white;
-    border-radius: 8px;
-    border: none;
-    cursor: pointer;
-    font-weight: bold;
-    transition: background-color 0.3s;
-}
-
-.myButton:hover {
-    background-color: #d96a1f;
-}
-
-.qr-area img {
-    width: 200px;
-    height: 200px;
-    margin-top: 15px;
-    border: 1px solid #ccc;
-    padding: 5px;
-}
+  /* Parceiros*/
 
 
-/* Parceiros*/
-
-/*Responsividade para tablet*/
-@media (max-width: 768px) {
-  .parceiro {
-    flex-direction: column !important;
-    margin: 30px 0;
-    text-align: center;
-  }
-  .parceiro img {
-    width: 100%;
-    max-width: 440px;
-    margin: 0 0 20px;
-  }
-  .conteudo-parceiros {
-    max-width: 100%;
-    padding: 0 20px;
-  }
-  .parceiros-titulo {
-    margin-bottom: 30px;
-    font-size: 1.8em;
-  }
-  .nome-parceiro {
-    font-size: 1.8em;
-  }
-  .link-parceiro {
-    font-size: 1em;
-  }
-  .texto-parceiro {
-    font-size: 1.1em;
-    line-height: 1.4;
-  }
-  .linha-parceiro {
-    width: 80%;
-  }
-}
-
-/* Responsividade para Celular  */
-@media (max-width: 480px) {
   .parceiro {
     margin: 20px 0;
   }
@@ -1045,5 +1105,3 @@ footer {
     width: 90%;
   }
 }
-
-

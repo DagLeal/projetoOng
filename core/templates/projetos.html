@@ -8,28 +8,42 @@
     <div class="projeto">
         <h2 class="titulo-projeto">{{ projeto.nome }}</h2>
 
-        {% if projeto.imagens.all %}
+        {% if projeto.media.all %}
         <div class="carousel-container">
             <div class="carousel" id="carousel-{{ forloop.counter }}">
-                {% for imagem in projeto.imagens.all %}
+                {% for media in projeto.media.all %}
                 <div class="slide">
-                    <img src="{{ imagem.imagem.url }}" alt="{{ imagem.titulo }}">
-                    {% if imagem.titulo %}
-                    <div class="imagem-titulo">{{ imagem.titulo }}</div>
+                    {% if media.media_type == 'image' %}
+                        <img src="{{ media.arquivo.url }}"
+                             alt="{{ media.titulo }}"
+                             loading="lazy"
+                             decoding="async">
+                    {% elif media.media_type == 'video' %}
+                    <div class="video-wrapper">
+                        <video controls playsinline {% if media.thumbnail %}poster="{{ media.thumbnail.url }}"{% endif %}>
+                            <source src="{{ media.arquivo.url }}" type="video/mp4">
+                            Your browser doesn't support HTML5 video.
+                        </video>
+                        {% if media.titulo %}
+                        <div class="media-titulo">{{ media.titulo }}</div>
+                        {% endif %}
+                    </div>
                     {% endif %}
                 </div>
                 {% endfor %}
             </div>
+            {% if projeto.media.all.count > 1 %}
             <button class="prev" onclick="moveSlide('{{ forloop.counter }}', -1)">❮</button>
             <button class="next" onclick="moveSlide('{{ forloop.counter }}', 1)">❯</button>
+            {% endif %}
         </div>
         {% endif %}
 
-        <p class="texto-projeto">{{ projeto.texto }}</p>
         {% if projeto.link %}
-        <p><a href="{{ projeto.link }}" target="_blank">{{ projeto.link }}</a></p>
+        <p class="projeto-link"><a href="{{ projeto.link }}" target="_blank">{{ projeto.link }}</a></p>
         {% endif %}
+        <p class="texto-projeto">{{ projeto.texto }}</p>
     </div>
 {% endfor %}
-
+<script src="{% static 'js/script.js' %}"></script>
 {% endblock %}

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Documento, Doacao, Noticia, Parceiro, Projeto, ImagemProjeto
+from .models import Documento, Parceiro, Projeto, MediaProjeto
 
 
 @admin.register(Documento)
@@ -23,26 +23,16 @@ class DocumentoAdmin(admin.ModelAdmin):
 
     preview.short_description = "Pré-visualização"
 
-@admin.register(Doacao)
-class DoacaoAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'email', 'cpf', 'valor', 'data_hora')
-
-
-
-@admin.register(Noticia)
-class NoticiaAdmin(admin.ModelAdmin):
-    list_display = ('titulo', 'data_publicacao')
-    search_fields = ('titulo',)
-
 @admin.register(Parceiro)
 class ParceiroAdmin(admin.ModelAdmin):
     list_display = ('nome', 'link')
 
-class ImagemProjetoInline(admin.TabularInline):
-    model = ImagemProjeto
+class MediaProjetoInline(admin.TabularInline):
+    model = MediaProjeto
     extra = 1
+    fields = ('media_type', 'arquivo', 'thumbnail', 'titulo')
 
 class ProjetoAdmin(admin.ModelAdmin):
-    inlines = [ImagemProjetoInline]
+    inlines = [MediaProjetoInline]
 
 admin.site.register(Projeto, ProjetoAdmin)
