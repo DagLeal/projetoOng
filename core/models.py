@@ -57,3 +57,4 @@ class MediaProjeto(models.Model):
 
     def __str__(self):
         return f"{self.media_type} - {self.titulo}"
+

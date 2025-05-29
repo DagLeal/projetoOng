@@ -1,11 +1,9 @@
-
 from .models import Documento, Parceiro, Projeto
 from django.core import serializers
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib import messages
-
 
 def doacao(request):
     return render(request, 'doacao.html')
