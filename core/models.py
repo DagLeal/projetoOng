@@ -15,6 +15,8 @@ class Documento(models.Model):
             return 'pdf'
         elif self.arquivo.name.lower().endswith(('.xls', '.xlsx', '.csv')):
             return 'planilha'
+        elif self.arquivo.name.lower().endswith(('.doc', '.docx')):
+            return 'word'
         return 'outro'
 
 

@@ -17,11 +17,11 @@ class DocumentoAdmin(admin.ModelAdmin):
                 return format_html('<a href="{}" target="_blank">📄 Visualizar PDF</a>', obj.arquivo.url)
             elif obj.tipo == 'planilha':
                 return format_html('<a href="{}" target="_blank">📊 Baixar Planilha</a>', obj.arquivo.url)
+            elif obj.tipo == 'word':
+                return format_html('<a href="{}" target="_blank">📝 Baixar Documento Word</a>', obj.arquivo.url)
             else:
                 return format_html('<a href="{}" target="_blank">📁 Baixar Arquivo</a>', obj.arquivo.url)
         return "Nenhum arquivo enviado"
-
-    preview.short_description = "Pré-visualização"
 
 @admin.register(Parceiro)
 class ParceiroAdmin(admin.ModelAdmin):

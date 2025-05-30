@@ -562,16 +562,75 @@ footer {
 .doc-main h1{
   color: #00B35F;
 }
-
+/*
 #documentoSelect{
   padding: 10px;
   font-size: 16px;
   width: 80%;
   max-width: 500px;
 }
-
+*/
 #documentoSelecionado{
   margin-top: 30px;
+}
+
+.custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 80%;
+    max-width: 500px;
+  margin: 0 auto;
+}
+
+#documentoSelect {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: white;
+    appearance: none;
+    -webkit-appearance: none;
+  cursor: pointer;
+  position: relative; /* Added this */
+  z-index: 1; /* Added this */
+}
+
+/* Dropdown options styling */
+#documentoSelect option {
+    padding: 8px;
+}
+
+/* Custom dropdown arrow */
+.custom-select-wrapper::after {
+    content: "▼";
+    font-size: 12px;
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    pointer-events: none;
+  z-index: 2;
+}
+
+/* For Firefox to show proper dropdown */
+@-moz-document url-prefix() {
+    #documentoSelect {
+        color: rgba(0,0,0,0);
+        text-shadow: 0 0 0 #000;
+    }
+}
+
+/* Dropdown open state (shows 5 items with scroll) */
+#documentoSelect:focus {
+    height: auto;
+    max-height: 150px; /* Shows about 5 items */
+    overflow-y: auto;
+    /* Removed position:absolute and z-index */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    /* Added these to prevent shifting */
+    margin-top: 0;
+    transform: none;
 }
 
 /* Presidente */
@@ -888,6 +947,38 @@ footer {
   padding: 0 20px;
   line-height: 1.6; /* Better text readability */
   color: #00B35F;
+}
+
+.pagination {
+    text-align: center;
+    margin: 40px 0;
+    padding: 20px 0;
+    border-top: 1px solid #eee;
+}
+
+.pagination a {
+    color: #00B35F;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: background-color .3s;
+    border: 1px solid #ddd;
+    margin: 0 4px;
+    border-radius: 4px;
+}
+
+.pagination a.active {
+    background-color: #00B35F;
+    color: white;
+    border: 1px solid #00B35F;
+}
+
+.pagination a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+.pagination .current {
+    padding: 8px 16px;
+    margin: 0 4px;
 }
 
 /*Doação*/

@@ -4,7 +4,7 @@
 {% block content %}
 <h1 class="titulo" style="padding-top: 30px">Projetos</h1>
 
-{% for projeto in projetos %}
+{% for projeto in page_obj.object_list %}  <!-- Explicitly use object_list -->
     <div class="projeto">
         <h2 class="titulo-projeto">{{ projeto.nome }}</h2>
 
@@ -44,6 +44,30 @@
         {% endif %}
         <p class="texto-projeto">{{ projeto.texto }}</p>
     </div>
+{% empty %}
+    <p>No projects found.</p>
 {% endfor %}
-<script src="{% static 'js/script.js' %}"></script>
+
+<!-- Pagination controls -->
+<div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; primeira</a>
+            <a href="?page={{ page_obj.previous_page_number }}">anterior</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">próxima</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">última &raquo;</a>
+        {% endif %}
+    </span>
+</div>
+
 {% endblock %}
+
+
+//Em caso de erro devolver <script src="{% static 'js/script.js' %}"></script>

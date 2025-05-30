@@ -4,6 +4,7 @@ from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 def doacao(request):
     return render(request, 'doacao.html')
@@ -25,8 +26,15 @@ def presidencia(request):
 
 
 def projetos(request):
-    projetos = Projeto.objects.prefetch_related('imagens')
-    return render(request, 'projetos.html', {'projetos': projetos})
+    # Order by newest first (add - before the field name for descending)
+    projetos_list = Projeto.objects.prefetch_related('media').order_by('-id')
+
+    # Add pagination (5 items per page)
+    paginator = Paginator(projetos_list, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'projetos.html', {'page_obj': page_obj})
 
 
 def parceiros(request):
@@ -35,8 +43,8 @@ def parceiros(request):
 
 
 def documentacao(request):
-    documentos = Documento.objects.all()
-    ultimo_documento = documentos.last() if documentos.exists() else None
+    documentos = Documento.objects.all().order_by('-id')
+    ultimo_documento = documentos.first() if documentos.exists() else None
 
     documentos_json = serializers.serialize('json', documentos)
 

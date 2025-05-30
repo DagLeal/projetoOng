@@ -6,17 +6,18 @@
     <section class="doc-main">
         <h1 class="titulo">Documentação</h1>
 
-        <select id="documentoSelect" onchange="mostrarDocumento()">
-            <option value="">Selecione um documento</option>
-            {% for doc in documentos %}
-                <option value="{{ doc.id }}" {% if doc.id == ultimo_documento.id %}selected{% endif %}>
-                    {{ doc.titulo }}
-                </option>
-            {% endfor %}
-        </select>
+        <div class="custom-select-wrapper">
+            <select id="documentoSelect" onchange="mostrarDocumento()">
+                <option value="">Selecione um documento</option>
+                {% for doc in documentos %}
+                    <option value="{{ doc.id }}" {% if doc.id == ultimo_documento.id %}selected{% endif %}>
+                        {{ doc.titulo }}
+                    </option>
+                {% endfor %}
+            </select>
+        </div>
 
-                    <div id="botaoDownload" style="margin-top: 15px;"></div>
-
+        <div id="botaoDownload" style="margin-top: 15px;"></div>
         <div id="documentoSelecionado" style="margin-top: 20px; width: 100%;">
             {% if ultimo_documento %}
                 {% if ultimo_documento.tipo == 'imagem' %}
@@ -34,7 +35,4 @@
 </div>
 
 <script id="documentos-json" type="application/json">{{ documentos_json|safe }}</script>
-<script src="{% static 'js/script.js' %}"></script>
-
 {% endblock %}
-
