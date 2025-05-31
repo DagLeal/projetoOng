@@ -1,7 +1,7 @@
 /*HTML base*/
 @font-face {
-    font-family: 'Poppins';
-    src: url("../fonts/Poppins-Regular.ttf") format('truetype');
+  font-family: 'Poppins';
+  src: url("../fonts/Poppins-Regular.ttf") format('truetype');
 }
 
 * {
@@ -10,7 +10,6 @@
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
-
 
 /*Header */
 
@@ -385,10 +384,12 @@ footer {
 .container {
   width: 85%;
   background: #FFF;
-  border-radius: 6px;
   padding: 20px 60px 30px 40px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   grid-area: contato;
+  border-left: 4px solid #F58634; /* laranja para destacar */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  margin: 30px 20px 50px 30px;
 }
 
 .container .content {
@@ -452,7 +453,8 @@ footer {
   color: #00B35F;
 }
 
-.right-side .input-box {
+.right-side .input-box,
+.right-side .button-box{
   width: 100%;
   margin: 12px 0;
 }
@@ -464,6 +466,16 @@ footer {
   outline: none;
   font-size: 16px;
   background: #F0F1F8;
+  border-radius: 6px;
+  padding: 0 15px;
+  resize: none;
+}
+
+.right-side .button-box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 16px;
   border-radius: 6px;
   padding: 0 15px;
   resize: none;
@@ -530,13 +542,13 @@ footer {
 }
 
 #TextoMapa{
-  color: #050505;
+  color: #F58634;
   text-decoration: none;
 }
 
 #TextoMapa:hover {
-    color: #00B35F;
-    text-decoration: underline;
+  color: #00B35F;
+  text-decoration: underline;
 }
 
 #mapa {
@@ -568,33 +580,31 @@ footer {
 }
 
 .custom-select-wrapper {
-    position: relative;
-    display: inline-block;
-    width: 80%;
-    max-width: 500px;
+  position: relative;
+  display: inline-block;
+  width: 80%;
+  max-width: 500px;
   margin: 0 auto;
 }
 
 #documentoSelect {
-    width: 100%;
-    padding: 10px;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    background-color: white;
-    appearance: none;
-    -webkit-appearance: none;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: white;
+  appearance: none;
+  -webkit-appearance: none;
   cursor: pointer;
-  position: relative; /* Added this */
-  z-index: 1; /* Added this */
+  position: relative;
+  z-index: 1;
 }
 
-/* Dropdown options styling */
 #documentoSelect option {
     padding: 8px;
 }
 
-/* Custom dropdown arrow */
 .custom-select-wrapper::after {
     content: "▼";
     font-size: 12px;
@@ -606,24 +616,20 @@ footer {
   z-index: 2;
 }
 
-/* For Firefox to show proper dropdown */
 @-moz-document url-prefix() {
-    #documentoSelect {
-        color: rgba(0,0,0,0);
-        text-shadow: 0 0 0 #000;
-    }
+  #documentoSelect {
+      color: rgba(0,0,0,0);
+      text-shadow: 0 0 0 #000;
+  }
 }
 
-/* Dropdown open state (shows 5 items with scroll) */
 #documentoSelect:focus {
-    height: auto;
-    max-height: 150px; /* Shows about 5 items */
-    overflow-y: auto;
-    /* Removed position:absolute and z-index */
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    /* Added these to prevent shifting */
-    margin-top: 0;
-    transform: none;
+  height: auto;
+  max-height: 150px;
+  overflow-y: auto;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  margin-top: 0;
+  transform: none;
 }
 
 /* Presidente */
@@ -708,12 +714,14 @@ footer {
   color: #00B35F; /* verde da ONG */
   text-align: center;
   margin-bottom: 30px;
+  padding-top: 30px;
 }
 
 .historia-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 30px;
+  font-size: 18px;
 }
 
 .historia-box {
@@ -773,14 +781,12 @@ footer {
 }
 
 .parceiros-titulo {
-    padding-top: 30px;
-    color: #F58634;
     margin-bottom: 40px;
 }
 
 .nome-parceiro {
     font-size: 2em;
-    color: #F58634;
+    color: #EB3135;
     margin-bottom: 10px;
 }
 
