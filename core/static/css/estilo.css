@@ -297,7 +297,7 @@ footer {
 #input_group button{
   background-color: #4267b3;
   border: none;
- color: #00B35F; /* var(--color-neutral-40) */
+  color: #00B35F; /* var(--color-neutral-40) */
   padding: 0px 1.25rem;
   font-size: 1.125rem;
   height: 100%;
@@ -325,7 +325,7 @@ footer {
   align-items: center;
   justify-content: center;
   padding: 12px 24px;
-  background-color: #00B35F;
+  background-color: #EB3135;
   color: #fff;
   text-decoration: none;
   border-radius: 8px;
@@ -562,14 +562,7 @@ footer {
 .doc-main h1{
   color: #00B35F;
 }
-/*
-#documentoSelect{
-  padding: 10px;
-  font-size: 16px;
-  width: 80%;
-  max-width: 500px;
-}
-*/
+
 #documentoSelecionado{
   margin-top: 30px;
 }
@@ -636,7 +629,7 @@ footer {
 /* Presidente */
 
 .about-us {
-    margin-top: 150px;
+    margin-top: 50px;
     padding-bottom: 150px;
 }
 
@@ -647,10 +640,11 @@ footer {
   align-items: center;
   width: 85%;
   background: #FFF;
-  border-radius: 6px;
-  padding: 20px 60px 30px 40px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   grid-area: contato;
+  padding: 20px 30px;
+  border-left: 4px solid #F58634; /* laranja para destacar */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
 }
 
 .container-presidente .content {
@@ -676,15 +670,15 @@ footer {
 }
 
 .text-about {
-    font-family: "Poppins", sans-serif;
+    font-size: 20px;
 }
 
 .divisao{
-    padding: 100px;
+    padding: 50px;
 }
 
 .img-about>img {
-    width: 30rem;
+    width: 35rem;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
     margin-left: 20px;
@@ -692,8 +686,14 @@ footer {
 }
 
 .about-text1 {
-    margin-top: 20px;
-    margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  color: #F58634;
+}
+
+.text-about h2{
+  font-size: 40px;
+  color: #EB3135;
 }
 
 /* História */
