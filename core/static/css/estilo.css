@@ -11,6 +11,10 @@
   font-family: "Poppins", sans-serif;
 }
 
+body{
+  background: rgba(0, 253, 135, 0.05);
+}
+
 /*Header */
 
 header {
