@@ -640,7 +640,6 @@ footer {
   align-items: center;
   width: 85%;
   background: #FFF;
-  grid-area: contato;
   padding: 20px 30px;
   border-left: 4px solid #F58634; /* laranja para destacar */
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
@@ -670,7 +669,7 @@ footer {
 }
 
 .text-about {
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .divisao{
@@ -815,8 +814,10 @@ footer {
   max-width: 65%; /* Limits width to 65% of parent */
   margin: 0 auto 80px; /* Centers the container */
   border-bottom: 1px solid #eee; /* Light separator between projects */
-  padding-bottom: 40px; /* Spacing below each project */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Soft shadow (optional) */
+  padding: 20px 30px 40px 30px;
+  border-left: 4px solid #F58634; /* laranja para destacar */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  border-radius: 8px;
 }
 
 .titulo-projeto {
