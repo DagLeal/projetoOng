@@ -1263,3 +1263,73 @@ footer {
     width: 90%;
   }
 }
+
+/*Doação*/
+
+.container-doacao {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  padding: 40px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+.form-doacao {
+  flex: 1;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-doacao h2 {
+  margin-bottom: 20px;
+}
+
+.form-doacao label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+.form-doacao input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.form-doacao button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background-color: #22aa55;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.form-doacao button:hover {
+  background-color: #1a8844;
+}
+
+.qr-code-area {
+  flex: 1;
+  background-color: #fff;
+  padding: 30px;
+  margin-left: 30px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.qr-code-area img {
+  margin-top: 20px;
+  width: 250px;
+  height: 250px;
+}

@@ -36,3 +36,7 @@
 
 <script id="documentos-json" type="application/json">{{ documentos_json|safe }}</script>
 {% endblock %}
+
+{% block scripts %}
+<script src="{% static 'js/scriptdoc.js' %}"></script>
+{% endblock %}
