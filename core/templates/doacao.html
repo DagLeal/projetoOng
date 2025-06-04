@@ -5,9 +5,10 @@
 
 {% block content %}
 
+<h1 class="titulo">Faça sua doação</h1>
+
 <div class="container-doacao">
     <form id="form-doacao" class="form-doacao">
-      <h2>Faça sua doação</h2>
 
       <label for="nome">Nome completo:</label>
       <input type="text" id="nome" name="nome" required />
@@ -24,11 +25,11 @@
       <button type="submit">Gerar QR Code</button>
     </form>
 
-    <div class="qr-code-area" id="qr-container" style="display: none;">
+    <div class="qr-code-area" id="qr-container">
       <h2>Escaneie o QR Code</h2>
-      <img id="qr-image" src="" alt="QR Code Pix" />
+      <img id="qr-image" src=""  />
     </div>
-  </div>
+</div>
 {% endblock %}
 
 {% block scripts %}
