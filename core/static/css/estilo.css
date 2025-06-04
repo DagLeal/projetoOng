@@ -281,13 +281,13 @@ footer {
 }
 
 #footer_subscribe p{
- color: #c4c4c4; /* var(--color-neutral-30) */
+ color: #c4c4c4;
 }
 
 #input_group{
   display: flex;
   align-items: center;
- background-color: #ffffff; /* var(--color-neutral-0) */
+ background-color: #ffffff;
   border-radius: 4px;
 }
 
@@ -300,7 +300,7 @@ footer {
 #input_group button{
   background-color: #4267b3;
   border: none;
-  color: #00B35F; /* var(--color-neutral-40) */
+  color: #00B35F;
   padding: 0px 1.25rem;
   font-size: 1.125rem;
   height: 100%;
@@ -316,7 +316,7 @@ footer {
 #footer_copyright{
   display: flex;
   justify-content: center;
-  background-color: #050505; /* var(--color-neutral-0) */
+  background-color: #050505;
   font-size: 0.9rem;
   padding: 1.5rem;
   font-weight: 100;
@@ -572,7 +572,7 @@ footer {
   flex-direction: column;
   align-items: center;
   gap: 2rem;
-  padding: 2rem;
+  padding: 0.5rem 2rem 2rem 2rem;
 }
 
 .doc-main h1{
@@ -639,7 +639,7 @@ footer {
 /* Presidente */
 
 .about-us {
-    margin-top: 50px;
+    margin-top: 30px;
     padding-bottom: 150px;
 }
 
@@ -709,15 +709,15 @@ footer {
 
 .historia-section {
   max-width: 1200px;
-  margin: 50px auto;
-  padding: 20px;
+  margin: 30px auto;
+  padding: 0 20px 20px 20px;
 }
 
 .titulo {
   font-size: 3em;
   color: #00B35F; /* verde da ONG */
   text-align: center;
-  margin-bottom: 30px;
+  margin-bottom: 33px;
   padding-top: 30px;
 }
 
@@ -736,7 +736,7 @@ footer {
   border-radius: 8px;
 }
 
-.historia-box h3 {
+.historia-box h2 {
   margin-top: 15px;
   color: #EB3135; /* vermelho institucional */
 }
@@ -828,6 +828,7 @@ footer {
   border-left: 4px solid #F58634; /* laranja para destacar */
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   border-radius: 8px;
+    background: #FFF;
 }
 
 .titulo-projeto {
@@ -995,8 +996,6 @@ footer {
 /*Doação*/
 
 
-
-
 /*--------------------------------- RESPONSIVIDADE ------------------------------------------ */
 
 @media (max-width: 950px){
@@ -1029,6 +1028,8 @@ footer {
     font-size: 18px;
   }
 
+  /* Doação */
+
 }
 
 @media (max-width: 820px){
@@ -1056,6 +1057,9 @@ footer {
     width: 100%;
     margin-left: 0;
   }
+
+  /* Doação */
+
 }
 
 @media (max-width: 768px) {
@@ -1077,12 +1081,14 @@ footer {
   }
 
   /* Footer */
+
   #footer_content{
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
   }
 
   /* Header */
+
   header {
     height: auto;
     font-size: 18px;
@@ -1124,6 +1130,7 @@ footer {
   }
 
   /* Presidente */
+
   .container {
     flex-direction: column;
     align-items: center;
@@ -1149,6 +1156,7 @@ footer {
   }
 
   /* Parceiros*/
+
   .parceiro {
     flex-direction: column !important;
     margin: 30px 0;
@@ -1180,6 +1188,8 @@ footer {
   .linha-parceiro {
     width: 80%;
   }
+
+  /* Doação */
 
 }
 
@@ -1234,7 +1244,6 @@ footer {
 
   /* Parceiros*/
 
-
   .parceiro {
     margin: 20px 0;
   }
@@ -1262,6 +1271,9 @@ footer {
   .linha-parceiro {
     width: 90%;
   }
+
+  /* Doação */
+
 }
 
 /*Doação*/
