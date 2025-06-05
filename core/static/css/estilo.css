@@ -355,6 +355,54 @@ footer {
 
 /* Home*/
 
+.instagram-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  margin: 30px 0;
+}
+.instagram-item {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+.instagram-item:hover {
+  transform: scale(1.02);
+}
+.instagram-item img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.video-thumbnail {
+  position: relative;
+}
+.play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0,0,0,0.6);
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+.instagram-caption {
+  padding: 10px;
+  font-size: 14px;
+}
+.instagram-date {
+  padding: 0 10px 10px;
+  font-size: 12px;
+  color: #666;
+}
+
 /*Tela Instagram Pag Home*/
 
 .instagram-feed {

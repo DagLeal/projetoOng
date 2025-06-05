@@ -1,4 +1,6 @@
 from django.db import models
+from django.utils import timezone
+from django.conf import settings
 
 class Documento(models.Model):
     titulo = models.CharField(max_length=255)
@@ -59,3 +61,33 @@ class MediaProjeto(models.Model):
 
     def __str__(self):
         return f"{self.media_type} - {self.titulo}"
+
+
+class InstagramAccount(models.Model):
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    instagram_user_id = models.CharField(max_length=255)
+    access_token = models.CharField(max_length=255)
+    token_timestamp = models.DateTimeField(default=timezone.now)
+    is_active = models.BooleanField(default=True)
+
+    def needs_token_refresh(self):
+        expiration_date = self.token_timestamp + timezone.timedelta(days=60)
+        buffer_date = expiration_date - timezone.timedelta(days=7)
+        return timezone.now() > buffer_date
+
+    def refresh_token(self):
+        from .utils import InstagramService
+        try:
+            service = InstagramService()
+            new_token = service.refresh_access_token(self.access_token)
+            self.access_token = new_token
+            self.token_timestamp = timezone.now()
+            self.save()
+            return True
+        except Exception as e:
+            logger.error(f"Failed to refresh token for account {self.id}: {e}")
+            return False
+
+class InstagramPost(models.Model):
+    account = models.ForeignKey(InstagramAccount, on_delete=models.CASCADE)
+    post_id = models.CharField(max_length=255)

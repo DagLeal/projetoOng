@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 import os
 from pathlib import Path
 
+from celery.schedules import crontab
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -139,3 +141,19 @@ X_FRAME_OPTIONS = 'SAMEORIGIN'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+INSTAGRAM_CONFIG = {
+    'client_id': 'your-client-id',
+    'client_secret': 'your-client-secret',
+    'redirect_uri': 'https://yourdomain.com/instagram/callback/',
+    # Optional initial access token
+    'access_token': None
+}
+
+# Celery settings (if using Celery)
+CELERY_BEAT_SCHEDULE = {
+    'refresh_instagram_tokens': {
+        'task': 'your_app.tasks.refresh_instagram_tokens',
+        'schedule': crontab(hour=3, minute=0),  # Daily at 3 AM
+    },
+}
