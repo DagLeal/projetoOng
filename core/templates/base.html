@@ -14,13 +14,16 @@
         <header id="main-header">
             <div class="header-content">
                 <div class="logo">
-                    <img id="logo-img" src="{% static 'img/logo-grande3.png' %}" alt="Logo">
+                    <img id="logo-img"
+                        src="{% static 'img/logo-grande3.png' %}"
+                        data-small="{% static 'img/logo-pequena.png' %}"
+                        alt="Logo">
                 </div>
                 <nav class="navbar">
                     <ul class="menu">
                         <li><a href="{% url 'home' %}">Home</a></li>
                         <li class="dropdown">
-                            <a href="#">Sobre</a>
+                            <a href="#" id="dropdown-toggle">Sobre</a>
                             <ul class="dropdown-menu">
                                 <li><a href="{% url 'historia' %}">História</a></li>
                                 <li><a href="{% url 'presidencia' %}">Presidência</a></li>
@@ -64,7 +67,8 @@
                         <h3>Links</h3>
                     </li>
                     <li>
-                        <a href="http://afrocariocadecinema.org.br/" target='_blank'class="footer-link">Afro-Carioca de Cinema</a>
+                        <a href="http://afrocariocadecinema.org.br/" target='_blank'class="footer-link">Centro
+                            Afro-Carioca de Cinema</a>
                     </li>
                     <li>
                         <a href="https://prefeitura.rio/" target='_blank'class="footer-link">Prefeitura do Rio de Janeiro</a>
@@ -73,7 +77,7 @@
                         <a href="http://www.palmares.gov.br/" target='_blank'class="footer-link">Fundação Cultural Palmares</a>
                     </li>
                     <li>
-                        <a href="https://reafro.org/" target='_blank'class="footer-link">Reafro</a>
+                        <a href="https://reafro.org.br/" target='_blank'class="footer-link">Reafro</a>
                     </li>
                     <li>
                         <a href="https://www.bndes.gov.br/" target='_blank'class="footer-link">BNDS</a>

@@ -2,69 +2,73 @@
 {% load static %}
 
 {% block content %}
-<h1 class="titulo">Projetos</h1>
+<div class="projetos-container">
+    <h1 class="titulo">Projetos</h1>
 
-{% for projeto in page_obj.object_list %}  <!-- Explicitly use object_list -->
-    <div class="projeto">
-        <h2 class="titulo-projeto">{{ projeto.nome }}</h2>
+    {% for projeto in page_obj.object_list %}
+        <div class="projeto">
+            <h2 class="titulo-projeto">{{ projeto.nome }}</h2>
 
-        {% if projeto.media.all %}
-        <div class="carousel-container">
-            <div class="carousel" id="carousel-{{ forloop.counter }}">
-                {% for media in projeto.media.all %}
-                <div class="slide">
-                    {% if media.media_type == 'image' %}
-                        <img src="{{ media.arquivo.url }}"
-                             alt="{{ media.titulo }}"
-                             loading="lazy"
-                             decoding="async">
-                    {% elif media.media_type == 'video' %}
-                    <div class="video-wrapper">
-                        <video controls playsinline {% if media.thumbnail %}poster="{{ media.thumbnail.url }}"{% endif %}>
-                            <source src="{{ media.arquivo.url }}" type="video/mp4">
-                            Your browser doesn't support HTML5 video.
-                        </video>
-                        {% if media.titulo %}
-                        <div class="media-titulo">{{ media.titulo }}</div>
+            {% if projeto.media.all %}
+            <div class="carousel-container">
+                <div class="carousel" id="carousel-{{ forloop.counter }}">
+                    {% for media in projeto.media.all %}
+                    <div class="slide">
+                        {% if media.media_type == 'image' %}
+                            <img src="{{ media.arquivo.url }}"
+                                 alt="{{ media.titulo }}"
+                                 loading="lazy"
+                                 decoding="async"
+                                 class="projeto-media">
+                        {% elif media.media_type == 'video' %}
+                        <div class="video-wrapper">
+                            <video controls playsinline {% if media.thumbnail %}poster="{{ media.thumbnail.url }}"{% endif %}
+                                   class="projeto-media">
+                                <source src="{{ media.arquivo.url }}" type="video/mp4">
+                                Your browser doesn't support HTML5 video.
+                            </video>
+                            {% if media.titulo %}
+                            <div class="media-titulo">{{ media.titulo }}</div>
+                            {% endif %}
+                        </div>
                         {% endif %}
                     </div>
-                    {% endif %}
+                    {% endfor %}
                 </div>
-                {% endfor %}
+                {% if projeto.media.all.count > 1 %}
+                <button class="prev" onclick="moveSlide('{{ forloop.counter }}', -1)">❮</button>
+                <button class="next" onclick="moveSlide('{{ forloop.counter }}', 1)">❯</button>
+                {% endif %}
             </div>
-            {% if projeto.media.all.count > 1 %}
-            <button class="prev" onclick="moveSlide('{{ forloop.counter }}', -1)">❮</button>
-            <button class="next" onclick="moveSlide('{{ forloop.counter }}', 1)">❯</button>
             {% endif %}
+
+            {% if projeto.link %}
+            <p class="projeto-link"><a href="{{ projeto.link }}" target="_blank" rel="noopener">{{ projeto.link }}</a></p>
+            {% endif %}
+            <div class="projeto-texto">
+                {{ projeto.texto }}
+            </div>
         </div>
-        {% endif %}
+    {% empty %}
+        <p class="no-projects">No projects found.</p>
+    {% endfor %}
 
-        {% if projeto.link %}
-        <p class="projeto-link"><a href="{{ projeto.link }}" target="_blank">{{ projeto.link }}</a></p>
-        {% endif %}
-        <p class="texto-projeto">{{ projeto.texto }}</p>
-    </div>
-{% empty %}
-    <p>No projects found.</p>
-{% endfor %}
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1" class="pagination-link">&laquo; primeira</a>
+                <a href="?page={{ page_obj.previous_page_number }}" class="pagination-link">anterior</a>
+            {% endif %}
 
-<!-- Pagination controls -->
-<div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}
-            <a href="?page=1">&laquo; primeira</a>
-            <a href="?page={{ page_obj.previous_page_number }}">anterior</a>
-        {% endif %}
+            <span class="current">
+                Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}
+            </span>
 
-        <span class="current">
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}" class="pagination-link">próxima</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}" class="pagination-link">última &raquo;</a>
+            {% endif %}
         </span>
-
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">próxima</a>
-            <a href="?page={{ page_obj.paginator.num_pages }}">última &raquo;</a>
-        {% endif %}
-    </span>
+    </div>
 </div>
-
 {% endblock %}

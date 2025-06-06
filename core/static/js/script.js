@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
         if (window.scrollY > 50) {
             header.classList.add('shrink');
             if (window.innerWidth > 768) {
-                logoImg.src = "/static/img/logo-pequena.png";
+                logoImg.src = logoImg.dataset.small;
             }
             main.style.paddingTop = "5.5vh";
         } else {
@@ -18,8 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    /* Documentos */
-/*Carrosel*/
+    /* Carrossel */
     document.querySelectorAll('.carousel').forEach(carousel => {
         const slides = carousel.querySelectorAll('.slide');
         const container = carousel.closest('.carousel-container');
@@ -31,6 +30,34 @@ document.addEventListener('DOMContentLoaded', function () {
             if (nextBtn) nextBtn.style.display = 'none';
         }
     });
+
+     // Improved Dropdown Toggle
+    const dropdownToggle = document.getElementById('dropdown-toggle');
+    const dropdownParent = dropdownToggle?.parentElement;
+    const dropdownMenu = dropdownParent?.querySelector('.dropdown-menu');
+
+    if (dropdownToggle && dropdownParent && dropdownMenu) {
+        dropdownToggle.addEventListener('click', function (e) {
+            // Close all other dropdowns first
+            document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                if (menu !== dropdownMenu) {
+                    menu.classList.remove('open');
+                }
+            });
+
+            // Toggle the clicked dropdown
+            dropdownMenu.classList.toggle('open');
+            e.stopPropagation();
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!dropdownParent.contains(e.target)) {
+                dropdownMenu.classList.remove('open');
+            }
+        });
+    }
+
 });
 
 window.moveSlide = function(carrosselId, direction) {
@@ -55,36 +82,4 @@ window.moveSlide = function(carrosselId, direction) {
         currentVideo.play().catch(e => console.log("Autoplay prevented:", e));
     }
 };
-/*
-// JS DO CARROSSEL ---------------------------------------------------------------------------------
 
-let slideIndex = 1;
-showSlides(slideIndex);
-
-// Next/previous controls
-function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-// Thumbnail image controls
-function currentSlide(n) {
-  showSlides(slideIndex = n);
-}
-
-function showSlides(n) {
-  let i;
-  let slides = document.getElementsByClassName("mySlides");
-  let dots = document.getElementsByClassName("dot");
-  if (n > slides.length) {slideIndex = 1}
-  if (n < 1) {slideIndex = slides.length}
-  for (i = 0; i < slides.length; i++) {
-    slides[i].style.display = "none";
-  }
-  for (i = 0; i < dots.length; i++) {
-    dots[i].className = dots[i].className.replace(" active", "");
-  }
-  slides[slideIndex-1].style.display = "block";
-  dots[slideIndex-1].className += " active";
-}
-
-// FIM JS DO CARROSSEL -------------------------------------------------------------------------------*/
