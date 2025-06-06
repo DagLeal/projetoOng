@@ -63,6 +63,16 @@ class MediaProjeto(models.Model):
         return f"{self.media_type} - {self.titulo}"
 
 
+class Doacoes(models.Model):
+    nome = models.CharField(max_length=100)
+    email = models.EmailField()
+    cpf = models.CharField(max_length=14)
+    valor = models.DecimalField(max_digits=10, decimal_places=2)
+    data_hora = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.nome} - R${self.valor:.2f} em {self.data_hora.strftime('%d/%m/%Y %H:%M')}"
+
 
 # Projeto Instagram
 

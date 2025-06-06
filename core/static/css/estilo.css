@@ -355,6 +355,14 @@ footer {
 
 /* Home*/
 
+.titulo-sessao{
+  color: #00B35F;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 1.3em;
+}
+
 .parceiro-home {
   display: flex;
   margin: 40px 0;

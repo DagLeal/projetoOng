@@ -4,60 +4,9 @@
 {% block title %}CADON | Página Inicial{% endblock %}
 {% block content %}
 
-{% if messages %}
-<div class="messages">
-    {% for message in messages %}
-    <div class="alert alert-{{ message.tags }}">{{ message }}</div>
-    {% endfor %}
-</div>
-{% endif %}
+<h1 class="titulo-sessao">Atualizações recentes no Instagram</h1>
 
-<div class="instagram-connection">
-    {% if instagram_connected %}
-        <p class="connected">✅ Connected to Instagram</p>
-        <a href="{% url 'instagram_disconnect' %}" class="btn btn-danger">Disconnect</a>
-    {% else %}
-        <p class="disconnected">⚠️ Not connected to Instagram</p>
-        <a href="{% url 'instagram_auth_start' %}" class="btn btn-primary">
-            Connect Instagram Account
-        </a>
-    {% endif %}
-</div>
-
-<div class="instagram-gallery">
-  {% for post in instagram_posts %}
-    <div class="instagram-item">
-      <a href="{{ post.link }}" target="_blank" rel="noopener noreferrer">
-        {% if post.type == 'video' %}
-          <div class="video-thumbnail">
-            <img src="{{ post.images.standard_resolution }}" alt="{{ post.caption }}">
-            <div class="play-icon">
-              <img src="{% static 'images/play-button.png' %}" alt="Play">
-            </div>
-          </div>
-        {% else %}
-          <img src="{{ post.images.standard_resolution }}" alt="{{ post.caption }}">
-        {% endif %}
-      </a>
-      <div class="instagram-info">
-        <div class="instagram-caption">
-          {{ post.caption|truncatechars:120 }}
-        </div>
-        <div class="instagram-date">
-          {{ post.created_time|date:"M d, Y" }}
-        </div>
-      </div>
-    </div>
-  {% empty %}
-    <div class="no-posts">
-      {% if instagram_connected %}
-        <p>No Instagram posts found or there was an error fetching them.</p>
-      {% else %}
-        <p>Connect your Instagram account to display posts.</p>
-      {% endif %}
-    </div>
-  {% endfor %}
-</div>
+<script src="https://s.electricblaze.com/widget.js" defer></script>
 
 <div class="home-container-projetos">
     <h1 class="projetos-sessao">Alguns de nossos projetos</h1>

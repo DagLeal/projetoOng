@@ -1,4 +1,4 @@
-from .models import Documento, Parceiro, Projeto, InstagramAccount
+from .models import Documento, Parceiro, Projeto, InstagramAccount, Doacoes
 from django.core import serializers
 from django.core.mail import send_mail
 from django.shortcuts import render, redirect
@@ -15,45 +15,17 @@ from django.utils import timezone
 def doacao(request):
     return render(request, 'doacao.html')
 
+# TODO jogar dados doação para tabela
 
 logger = logging.getLogger(__name__)
 
 
 def home(request):
-    context = {}
-    try:
-        # Get the user's Instagram account if connected
-        account = InstagramAccount.objects.filter(user=request.user, is_active=True).first()
-
-        if account:
-            # Initialize service with automatic token refresh
-            instagram = InstagramService(
-                access_token=account.access_token,
-                token_timestamp=account.token_timestamp
-            )
-
-            # Store potentially refreshed token
-            if instagram.access_token != account.access_token:
-                account.access_token = instagram.access_token
-                account.token_timestamp = instagram.token_timestamp
-                account.save()
-
-            context['instagram_posts'] = instagram.get_recent_posts(count=8)
-            context['instagram_connected'] = True
-        else:
-            context['instagram_posts'] = []
-            context['instagram_connected'] = False
-
-    except InstagramServiceError as e:
-        messages.error(request, f"Instagram service error: {e}")
-        context['instagram_posts'] = []
 
     parceiros = Parceiro.objects.all()
 
-    # Order by newest first (add - before the field name for descending)
     projetos_list = Projeto.objects.prefetch_related('media').order_by('-id')
 
-    # Add pagination (5 items per page)
     paginator = Paginator(projetos_list, 5)
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
