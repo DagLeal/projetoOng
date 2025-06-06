@@ -59,5 +59,66 @@
   {% endfor %}
 </div>
 
+<div class="home-container-projetos">
+    <h1 class="projetos-sessao">Alguns de nossos projetos</h1>
 
+    {% for projeto in page_obj.object_list|slice:":2" %}
+        <div class="projeto">
+            <h2 class="titulo-projeto">{{ projeto.nome }}</h2>
+
+            {% if projeto.media.all %}
+            <div class="carousel-container">
+                <div class="carousel" id="carousel-{{ forloop.counter }}">
+                    {% for media in projeto.media.all %}
+                    <div class="slide">
+                        {% if media.media_type == 'image' %}
+                            <img src="{{ media.arquivo.url }}"
+                                 alt="{{ media.titulo }}"
+                                 loading="lazy"
+                                 decoding="async">
+                        {% elif media.media_type == 'video' %}
+                        <div class="video-wrapper">
+                            <video controls playsinline {% if media.thumbnail %}poster="{{ media.thumbnail.url }}"{% endif %}>
+                                <source src="{{ media.arquivo.url }}" type="video/mp4">
+                                Your browser doesn't support HTML5 video.
+                            </video>
+                            {% if media.titulo %}
+                            <div class="media-titulo">{{ media.titulo }}</div>
+                            {% endif %}
+                        </div>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+                {% if projeto.media.all.count > 1 %}
+                <button class="prev" onclick="moveSlide('{{ forloop.counter }}', -1)">❮</button>
+                <button class="next" onclick="moveSlide('{{ forloop.counter }}', 1)">❯</button>
+                {% endif %}
+            </div>
+            {% endif %}
+
+            {% if projeto.link %}
+            <p class="projeto-link"><a href="{{ projeto.link }}" target="_blank">{{ projeto.link }}</a></p>
+            {% endif %}
+            <p class="texto-projeto">{{ projeto.texto }}</p>
+        </div>
+    {% empty %}
+        <p>Nenhum projeto encontrado.</p>
+    {% endfor %}
+
+    <a href="{% url 'projetos' %}" class="link-projetos-home">Veja todos nossos projetos</a>
+</div>
+
+<div class="home-container-parceiros">
+    <h1 class="projetos-sessao">Parceiros</h1>
+
+    <div class="parceiro-home">
+        {% for parceiro in parceiros %}
+            <a href="{{ parceiro.link }}" target="_blank"><img src="{{ parceiro.imagem.url }}" alt="{{ parceiro.nome }}"></a>
+        {% endfor %}
+    </div>
+    <a href="{% url 'parceiros' %}" class="link-parceiro-home">Saiba mais sobre nossos parceiros</a>
+</div>
+
+<script src="{% static 'js/script.js' %}"></script>
 {% endblock %}

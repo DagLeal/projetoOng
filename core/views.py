@@ -48,7 +48,17 @@ def home(request):
         messages.error(request, f"Instagram service error: {e}")
         context['instagram_posts'] = []
 
-    return render(request, 'home.html', context)
+    parceiros = Parceiro.objects.all()
+
+    # Order by newest first (add - before the field name for descending)
+    projetos_list = Projeto.objects.prefetch_related('media').order_by('-id')
+
+    # Add pagination (5 items per page)
+    paginator = Paginator(projetos_list, 5)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    return render(request, 'home.html', {'parceiros': parceiros, 'page_obj': page_obj})
 
 @require_GET
 def instagram_auth_start(request):

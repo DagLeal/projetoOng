@@ -63,6 +63,9 @@ class MediaProjeto(models.Model):
         return f"{self.media_type} - {self.titulo}"
 
 
+
+# Projeto Instagram
+
 class InstagramAccount(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     instagram_user_id = models.CharField(max_length=255)
