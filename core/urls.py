@@ -1,6 +1,6 @@
 from django.urls import path
 from . import views
-
+from .views import gerar_pix_view
 
 urlpatterns = [
     path('', views.home, name='home'),
@@ -16,5 +16,6 @@ urlpatterns = [
     path('instagram/auth/', views.instagram_auth_start, name='instagram_auth_start'),
     path('instagram/callback/', views.instagram_auth_callback, name='instagram_auth_callback'),
     path('instagram/disconnect/', views.instagram_disconnect, name='instagram_disconnect'),
+    path("api/gerar-pix/", gerar_pix_view, name="gerar_pix"),
 ]
 

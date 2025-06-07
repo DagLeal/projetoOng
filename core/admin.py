@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from .models import Documento, Parceiro, Projeto, MediaProjeto, Doacoes
+from .models import Documento, Parceiro, Projeto, MediaProjeto, Doacao
 
 
 @admin.register(Documento)
@@ -39,7 +39,7 @@ class ProjetoAdmin(admin.ModelAdmin):
 admin.site.register(Projeto, ProjetoAdmin)
 
 
-@admin.register(Doacoes)
+@admin.register(Doacao)
 class DoacoesAdmin(admin.ModelAdmin):
     list_display = ('nome', 'email', 'cpf', 'valor', 'data_hora')
     readonly_fields = ('nome', 'email', 'cpf', 'valor', 'data_hora')
