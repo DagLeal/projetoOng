@@ -40,6 +40,7 @@ class Projeto(models.Model):
     def __str__(self):
         return self.nome
 
+
 class ImagemProjeto(models.Model):
     projeto = models.ForeignKey(Projeto, on_delete=models.CASCADE, related_name='imagens')
     imagem = models.ImageField(upload_to='projetos/')
@@ -47,6 +48,7 @@ class ImagemProjeto(models.Model):
 
     def __str__(self):
         return self.titulo or f"Imagem de {self.projeto.nome}"
+
 
 class MediaProjeto(models.Model):
     MEDIA_TYPES = (
@@ -100,6 +102,7 @@ class InstagramAccount(models.Model):
         except Exception as e:
             logger.error(f"Failed to refresh token for account {self.id}: {e}")
             return False
+
 
 class InstagramPost(models.Model):
     account = models.ForeignKey(InstagramAccount, on_delete=models.CASCADE)
