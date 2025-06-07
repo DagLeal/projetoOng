@@ -125,6 +125,8 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
@@ -167,7 +169,6 @@ SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 AXES_FAILURE_LIMIT = 3  # após 3 tentativas
 AXES_COOLOFF_TIME = 15  # bloqueia por 15 minutos
 AXES_LOCKOUT_PARAMETERS = ['ip_address']  # bloqueia por IP e/ou usuário
-AXES_USE_USER_AGENT = True
 AXES_RESET_ON_SUCCESS = True
 
 AUTHENTICATION_BACKENDS = [
